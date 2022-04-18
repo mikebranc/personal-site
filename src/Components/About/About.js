@@ -1,5 +1,5 @@
 import React from 'react'
-import SectionBlock from './SectionBlock'
+import SectionBlock from '../SectionBlock'
 import './About.css'
 
 export default function About(){

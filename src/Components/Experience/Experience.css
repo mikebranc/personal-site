@@ -1,0 +1,30 @@
+.expPosition{
+    font-weight:bold;
+    font-size:33px;
+    margin-bottom:25px;
+
+}
+.expCompany{
+    font-size:27px;
+    color: #833232;
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+.expDetail{
+    font-size:25px;
+    color: #C0C0C0;
+    margin:0px;
+
+}
+.expDescription{
+    font-size:18px;
+    line-height: 25px;
+    max-width: 1200px;
+}
+.expDescriptionBullet{
+    margin-bottom: 5px;
+}
+.expBlockWrapper{
+    padding:0px 30px;
+}
