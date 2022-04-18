@@ -1,3 +1,6 @@
+body{
+    background-color: black;
+}
 .navStyle{
     background-color: black;
     padding:15px 50px ;
@@ -23,4 +26,22 @@
 .navLinkWrapper{
     display:flex;
     align-items: center;
+}
+.sectionBlock{
+    font-size: 30px;
+    font-family:'Rubik', sans-serif;
+    font-weight:bold;
+    color:black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAFAFA;
+    line-height: 62px;
+    border-radius: 10px;
+}
+.homeWrapper{
+    padding: 40px 100px;
+    max-width: 1400px;
+    margin:auto;
+    width:100%;
 }
