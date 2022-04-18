@@ -1,0 +1,26 @@
+.navStyle{
+    background-color: black;
+    padding:15px 50px ;
+    display:flex;
+    justify-content: space-between;
+
+}
+.navLink{
+    color:white;
+    text-decoration: none;
+    margin-right:20px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+#nameLink{
+    font-weight:bold;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 400;
+    font-size: 28px;
+}
+.navLinkWrapper{
+    display:flex;
+    align-items: center;
+}
