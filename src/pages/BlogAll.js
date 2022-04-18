@@ -7,7 +7,7 @@ export default function BlogAll(){
     return(
         <div>
             <Navbar />
-            <h1>Dis da blog</h1>
+            <h1>This is the blog</h1>
         </div>
     )
 }
