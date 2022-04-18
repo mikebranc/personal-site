@@ -1,0 +1,32 @@
+.schoolHeading{
+    font-weight: bold;
+    font-size: 35px;
+    padding-top: 0px;
+    line-height: 0px;
+}
+.schoolWrapper{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+}
+.schoolDetail{
+    font-size:23px;
+    line-height: 0px;
+}
+.degreeWrapper{
+    display: flex;
+    justify-content: space-between;
+    font-size:20px;
+    color:#C1C1C1;
+}
+.acheivementHeading{
+    font-size:19px;
+    margin-bottom:0px;
+}
+.acheivementDetail{
+    line-height: 25px;
+}
+.degreeName{
+    margin-bottom: 0px;
+}
