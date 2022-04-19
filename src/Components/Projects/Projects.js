@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProjectData from './ProjectData';
-import githubIcon from './github.png';
+import github from '../images/github.png'
 import './Projects.css';
 import SectionBlock from '../SectionBlock';
 
 export default function Projects(){
+    const [showProjects, setShowProjects] = useState(false)
     const projectInfo = ProjectData.map(project =>{
         return(  
             <a className="projectLinkBlock" href={project.projectLink}>
@@ -12,7 +13,7 @@ export default function Projects(){
                     <div className="projectHead">
                         <h3 className="projectName">{project.projectName}</h3>
                         <a href={project.githubLink}>
-                            <img className="projectGithubLink" src={githubIcon} />
+                            <img className="projectGithubLink" src={github} alt="github Icon" />
                         </a> 
                     </div>
                     <p className="projectDescription">{project.description}</p>
@@ -27,9 +28,11 @@ export default function Projects(){
     })
     return(
         <div>
-            <SectionBlock sectionName="Projects" />
+            <div onClick={()=>setShowProjects(prevState => !prevState)} className="sectionBlockWrapper">
+                <SectionBlock sectionName="PROJECTS"/>
+            </div>
             <div className="projectSectionWrapper">
-            {projectInfo}
+            {showProjects && projectInfo}
             </div>
         </div>
         

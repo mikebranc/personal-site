@@ -1,14 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SectionBlock from '../SectionBlock'
 import './About.css'
 
 export default function About(){
+    const [showAbout, setShowAbout] = useState(false)
+
     return(
         <div>
-            <SectionBlock sectionName="About" />
-            <div className="aboutContentWrapper">
+            <div onClick={()=>setShowAbout(prevState => !prevState)} className="sectionBlockWrapper">
+                <SectionBlock sectionName="ABOUT"/>
+            </div>
+            {showAbout &&
+                <div className="aboutContentWrapper">
                 <div className="aboutPhotoCol">
-                    <img className="profilePhoto" src="https://www.essence.com/wp-content/uploads/2020/08/Yachty-tout.jpg"/>
+                    <img alt="profilePhoto" className="profilePhoto" src="https://www.essence.com/wp-content/uploads/2020/08/Yachty-tout.jpg"/>
                 </div>
                 <div className="aboutTextCol">
                     <h3 className="welcomeMessage">Hi! I'm Michael Branconier</h3>
@@ -26,6 +31,7 @@ export default function About(){
                         technology! I know that’s what everyone says. But I’m serious!</p>
                 </div>
             </div>
+            }
         </div>
     )
 }

@@ -1,7 +1,9 @@
 body{
     background-color: black;
     color: #FAFAFA;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight:normal;
+    letter-spacing: 20%;
 }
 .navStyle{
     background-color: black;
@@ -14,7 +16,7 @@ body{
     color:white;
     text-decoration: none;
     margin-right:20px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 22px;
 }
@@ -30,10 +32,10 @@ body{
     align-items: center;
 }
 .sectionBlock{
-    font-size: 28px;
-    font-family:'Rubik', sans-serif;
-    font-weight:bold;
+    font-size: 22px;
+    font-family: 'Raleway', sans-serif;
     color:black;
+    font-weight:900px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -44,10 +46,13 @@ body{
 }
 .homeWrapper{
     padding: 40px 100px;
-    max-width: 1400px;
+    max-width: 1200px;
     margin:auto;
     width:100%;
 }
 .sectionBlockHeading{
     margin:0px;
+}
+.sectionBlockWrapper{
+    margin-bottom:20px;
 }

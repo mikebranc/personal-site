@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import SkillsData from "./SkillsData";
 import SectionBlock from "../SectionBlock";
 import './Skills.css'
@@ -7,6 +7,7 @@ export default function Skills(){
     const Languages =[ "Javascript", "Python", "SQL", "HTML/CSS", "Java"]
     const Frameworks =["React", "git/Github", "Google Firebase"]
     const Technologies=["Salesforce", "Pardot", "Excel", "Tableau", "VS Code", "Webflow", "Google Analytics"]
+    const [showSkills, setShowSkills] = useState(false)
 
     const skillsInfo = SkillsData.map(skillGroup => {
         return(
@@ -18,9 +19,11 @@ export default function Skills(){
     })
     return (
         <div>
-            <SectionBlock sectionName="Skills" />
+            <div onClick={()=>setShowSkills(prevState => !prevState)} className="sectionBlockWrapper">
+                <SectionBlock sectionName="SKILLS"/>
+            </div>
             <div className="skillsWrapper">
-                {skillsInfo}
+                {showSkills && skillsInfo}
             </div>
         </div>
     )

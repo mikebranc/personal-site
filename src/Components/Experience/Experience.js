@@ -1,10 +1,11 @@
-import React from "react"
+import React, {useState} from "react"
 import SectionBlock from "../SectionBlock"
 import ExperienceData from "./ExperienceData"
 import './Experience.css'
 
 export default function Experience(){
-
+    const [showExpereince, setShowExperience] = useState(false)
+    
     const experiences = ExperienceData.map(exp => {
         return (
             <div className="expBlockWrapper">
@@ -19,9 +20,13 @@ export default function Experience(){
     })
 
     return(
-        <div className="expWrapper">
-            <SectionBlock sectionName="Experience"/>
-            {experiences}
+        <div>
+            <div onClick={()=>setShowExperience(prevState => !prevState)} className="sectionBlockWrapper">
+                <SectionBlock sectionName="EXPERIENCE"/>
+            </div>
+            {
+            showExpereince && experiences
+            }
         </div>
     )
 }

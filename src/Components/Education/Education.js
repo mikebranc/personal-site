@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import SectionBlock from "../SectionBlock";
 import './Education.css'
 
 export default function Education(){
+    const [showEducation, setShowEducation] = useState(false)
     return(
         <div>
-            <SectionBlock sectionName="Education" />
+            <div onClick={()=>setShowEducation(prevState => !prevState)} className="sectionBlockWrapper">
+                <SectionBlock sectionName="EDUCATION"/>
+            </div>
+            { showEducation &&
             <div className="educationWrapper">
                 <div className="schoolWrapper" >
                     <h3 className="schoolHeading">Loyola Marymount University</h3>
@@ -27,6 +31,8 @@ export default function Education(){
                     </ul>
                 </div>
             </div>
+            }
+            
         </div>
     )
 }
