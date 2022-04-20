@@ -1,18 +1,19 @@
 
 .profilePhoto{
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
     object-fit:cover;
     border-radius: 50%;
 
 }
 .welcomeMessage{
-    font-size: 30px;
+    font-size: 28px;
 
 }
 .aboutText{
-    font-size: 19px;
+    font-size: 16px;
     max-width:800px;
+    letter-spacing: 10%;
 
 }
 .aboutContentWrapper{
@@ -22,7 +23,32 @@
 }
 .aboutPhotoCol{
     width:30%;
+    margin-right:30px;
 }
 .aboutTextCol{
-    width:70%;
+    width:65%;
+}
+
+@media only screen and (max-width: 768px) {
+    .aboutContentWrapper{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .aboutTextCol{
+        width:100%
+    }
+    .aboutPhotoCol{
+        width:100%;
+        margin-right:0px;
+    }
+    .profilePhoto{
+        width:200px;
+        height:200px;
+    
+    }
+    .aboutContentWrapper{
+        display:flex;
+        align-items: center;
+    }
 }

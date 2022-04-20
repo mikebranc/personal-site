@@ -19,7 +19,7 @@ export default function Education(){
                     <h4 className="degreeName">B.B.A in Applied Information Management Systems 
                         <br/>
                         Minor in Computer Science</h4>
-                    <h4>Magna Cum Laude | GPA: 3.89</h4>
+                    <h4 className="degreeDetails">Magna Cum Laude | GPA: 3.89</h4>
                 </div>
                 <div className="acheivementWrapper">
                     <h5 className="acheivementHeading">Acheivements and Awards</h5>

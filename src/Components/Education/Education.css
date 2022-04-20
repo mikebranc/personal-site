@@ -1,18 +1,21 @@
 .schoolHeading{
     font-weight: bold;
-    font-size: 35px;
+    font-size: 32px;
     padding-top: 0px;
-    line-height: 0px;
+    margin-bottom: 0px;
+    margin-top:0px;
 }
 .schoolWrapper{
     display:flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin: 15px 0px 0px 0px;
 
 }
 .schoolDetail{
     font-size:23px;
-    line-height: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
 }
 .degreeWrapper{
     display: flex;
@@ -35,4 +38,24 @@
 }
 .educationWrapper{
     padding:0px 30px;
+}
+@media only screen and (max-width: 768px){
+    .schoolWrapper,.degreeWrapper{
+        flex-direction: column;
+    
+    }
+    .degreeName{
+        margin-top: 15px;
+    }
+    .degreeDetails{
+        margin-top:10px;
+        font-style: italic;
+    }
+    .acheivementHeading{
+
+        margin-top:0px;
+    }
+    .schoolHeading{
+        font-size:27px;
+    }
 }

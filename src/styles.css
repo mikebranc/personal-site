@@ -32,10 +32,6 @@ body{
     align-items: center;
 }
 .sectionBlock{
-    font-size: 22px;
-    font-family: 'Raleway', sans-serif;
-    color:black;
-    font-weight:900px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -52,6 +48,10 @@ body{
 }
 .sectionBlockHeading{
     margin:0px;
+    font-size: 35px;
+    font-family: 'Raleway', sans-serif;
+    color:black;
+    font-weight:400;
 }
 .sectionBlockWrapper{
     margin-bottom:20px;
