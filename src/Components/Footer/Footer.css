@@ -3,7 +3,6 @@
     justify-content:center;
 }
 .footerLinkWrapper{
-    background-color: black;
     width:50%;
     display:flex;
     justify-content:space-between;

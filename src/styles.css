@@ -1,12 +1,12 @@
 body{
-    background-color: black;
+    background-color: #1e1e1e;
     color: #FAFAFA;
     font-family: 'Raleway', sans-serif;
     font-weight:normal;
     letter-spacing: 20%;
 }
 .navStyle{
-    background-color: black;
+    background-color: #1e1e1e;
     padding:15px 50px ;
     display:flex;
     justify-content: space-between;
@@ -58,5 +58,11 @@ body{
     margin-bottom:20px;
 }
 @media only screen and (max-width: 768px){
-
+    .navStyle{
+        background-color: #1e1e1e;
+        padding:15px 15px ;
+        display:flex;
+        justify-content: space-between;
+    
+    }
 }
