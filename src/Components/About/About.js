@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import SectionBlock from '../SectionBlock'
 import './About.css'
+import headshot from '../images/headshot.jpg'
 
 export default function About(){
     const [showAbout, setShowAbout] = useState(false)
@@ -13,7 +14,7 @@ export default function About(){
             {showAbout &&
                 <div className="aboutContentWrapper">
                 <div className="aboutPhotoCol">
-                    <img alt="profilePhoto" className="profilePhoto" src="https://www.essence.com/wp-content/uploads/2020/08/Yachty-tout.jpg"/>
+                    <img alt="profilePhoto" className="profilePhoto" src={headshot}/>
                 </div>
                 <div className="aboutTextCol">
                     <h3 className="welcomeMessage">Hi! I'm Michael Branconier</h3>

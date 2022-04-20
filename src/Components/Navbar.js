@@ -4,7 +4,6 @@ import "../styles.css"
 
 export default function Navbar() {
     return (
-    <div>
         <nav className="navStyle">
             <Link to="/" id ="nameLink" className="navLink">Michael Branconier</Link>
             <div className="navLinkWrapper">
@@ -12,6 +11,5 @@ export default function Navbar() {
                 <Link to="/blog" className ="navLink">Blog</Link>
             </div>
         </nav>
-    </div>
     );
 }

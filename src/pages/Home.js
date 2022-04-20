@@ -9,7 +9,7 @@ import Footer from "../Components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Navbar/>
       <div className="homeWrapper">
         <About />

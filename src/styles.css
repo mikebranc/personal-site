@@ -30,6 +30,7 @@ body{
 .navLinkWrapper{
     display:flex;
     align-items: center;
+    justify-content:end;
 }
 .sectionBlock{
     display:flex;
@@ -55,4 +56,7 @@ body{
 }
 .sectionBlockWrapper{
     margin-bottom:20px;
+}
+@media only screen and (max-width: 768px){
+
 }
