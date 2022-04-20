@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom"
 import Navbar from "../Components/Navbar"
 import ReactMarkdown from "react-markdown"
 import '../blogDetail.css'
+import Footer from "../Components/Footer/Footer"
 
 
 
@@ -33,13 +34,18 @@ For someone on the maker's schedule, having a meeting is like throwing an except
             <Navbar />
             <div className="blogPostWrapperOuter"> 
                 <div className="blogPostWrapperInner">
-                <h1 className="blogDetailHeading">{blog.title}</h1>
+                    <h1 className="blogDetailHeading">{blog.title}</h1>
                     <span className="blogDetailDate">{blog.date}</span>
                     <p className="blogDetailBody">
                         <ReactMarkdown children={blog.body}/>
                     </p>
+                    <div className="divider"></div>
+                    <a href="https://medium.com/@michaelbranconier" >
+                        <button className="mediumButton">Read on Medium</button>
+                    </a>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

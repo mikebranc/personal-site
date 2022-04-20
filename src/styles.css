@@ -58,5 +58,11 @@ body{
     margin-bottom:20px;
 }
 @media only screen and (max-width: 768px){
-
+    .navStyle{
+        background-color: #1e1e1e;
+        padding:15px 15px ;
+        display:flex;
+        justify-content: space-between;
+    
+    }
 }
