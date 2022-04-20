@@ -1,0 +1,30 @@
+.skillGroupBox{
+    border: 3px solid #FAFAFA;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 0px 20px 0px;
+    margin-bottom: 50px;
+}
+
+.skillsWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px; 
+    margin: 20px 0px 0px 0px;
+}
+.skill{
+    margin: 5px 0px;
+}
+@media only screen and (max-width: 768px){
+    .skillsWrapper{
+        grid-template-columns: 1fr;
+        gap:0px;
+    }
+    .skillGroupBox{
+        margin-bottom:20px;
+    }
+
+}

@@ -1,0 +1,61 @@
+.schoolHeading{
+    font-weight: bold;
+    font-size: 32px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-top:0px;
+}
+.schoolWrapper{
+    display:flex;
+    justify-content: space-between;
+    margin: 15px 0px 0px 0px;
+
+}
+.schoolDetail{
+    font-size:23px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+}
+.degreeWrapper{
+    display: flex;
+    justify-content: space-between;
+    font-size:20px;
+    color:#C1C1C1;
+}
+.acheivementHeading{
+    font-size:19px;
+    margin-bottom:0px;
+}
+.acheivementDetail{
+    line-height: 25px;
+}
+.degreeName{
+    margin-bottom: 0px;
+}
+.acheivementWrapper{
+    margin-bottom: 50px;
+}
+.educationWrapper{
+    padding:0px 30px;
+}
+@media only screen and (max-width: 768px){
+    .schoolWrapper,.degreeWrapper{
+        flex-direction: column;
+    
+    }
+    .degreeName{
+        margin-top: 15px;
+    }
+    .degreeDetails{
+        margin-top:10px;
+        font-style: italic;
+    }
+    .acheivementHeading{
+
+        margin-top:0px;
+    }
+    .schoolHeading{
+        font-size:27px;
+    }
+}

@@ -1,3 +1,10 @@
+body{
+    background-color: black;
+    color: #FAFAFA;
+    font-family: 'Raleway', sans-serif;
+    font-weight:normal;
+    letter-spacing: 20%;
+}
 .navStyle{
     background-color: black;
     padding:15px 50px ;
@@ -9,7 +16,7 @@
     color:white;
     text-decoration: none;
     margin-right:20px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 22px;
 }
@@ -23,4 +30,33 @@
 .navLinkWrapper{
     display:flex;
     align-items: center;
+    justify-content:end;
+}
+.sectionBlock{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAFAFA;
+    line-height: 62px;
+    border-radius: 10px;
+    padding: 18px 0px;
+}
+.homeWrapper{
+    padding: 40px 100px;
+    max-width: 1200px;
+    margin:auto;
+    width:100%;
+}
+.sectionBlockHeading{
+    margin:0px;
+    font-size: 35px;
+    font-family: 'Raleway', sans-serif;
+    color:black;
+    font-weight:400;
+}
+.sectionBlockWrapper{
+    margin-bottom:20px;
+}
+@media only screen and (max-width: 768px){
+
 }

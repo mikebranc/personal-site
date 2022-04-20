@@ -1,0 +1,54 @@
+.projectGithubLink{
+    width:30px;
+    height:30px;
+}
+.projectLinkBlock{
+    text-decoration: none;
+    color:#FAFAFA;
+}
+.projectWrapper{
+    border: 3px solid #FAFAFA;
+    border-radius: 10px;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100%;
+}
+.projectHead{
+    display:flex;
+    justify-content: space-between;
+}
+.projectSectionWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 65px; 
+    column-gap:15px;
+    margin: 20px 0px 50px 0px;
+}
+.projectName{
+    margin: 0px;
+    font-size: 28px;
+}
+.projectSkillWrapper{
+    display:flex;
+    justify-content: space-evenly;
+    
+}
+.projectDescription{
+    font-weight: 400px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+}
+.projectSkill{
+    color: #E2E2E2;
+    font-size:14px;
+}
+@media only screen and (max-width: 768px){
+    .projectSectionWrapper{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
