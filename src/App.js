@@ -8,7 +8,6 @@ import {
 import Home from "./pages/Home"
 import BlogAll from "./pages/BlogAll"
 import BlogDetail from "./pages/BlogDetail"
-import LogIn from './pages/LogIn';
 
 //https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
 
@@ -20,7 +19,6 @@ function App() {
           <Route exact path='/' element={<Home/>} />
           <Route path='/blog' element={<BlogAll/>} />
           <Route path="/blog/:blogId" element={<BlogDetail/>}/>
-          <Route path="/login" element={<LogIn />}/>
         </Routes>
       </div>
     </Router>
