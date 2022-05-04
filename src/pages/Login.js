@@ -32,8 +32,8 @@ export default function Login(){
         fontFamily: 'Kaushan Script, cursive'
     }
 
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
 
     const handleChange = (event) =>{
