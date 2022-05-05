@@ -1,7 +1,6 @@
 .post{
     text-decoration: none;
     color:black;
-
 }
 .postDiv{
     background-color: white;
@@ -9,6 +8,9 @@
     padding: 5px 20px;
     margin-bottom:25px;
     max-width: 1200px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
 }
 .postsWrapperInner{
     padding: 50px 20px;
@@ -21,4 +23,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.delEditWrapper{
+    display:flex;
+
+}
+.delEditIcon{
+    width:40px;
+    margin: 0px 10px;
+
+}
+.postEdit{
+    text-decoration: none;
+    color:black;
+    min-width:1200px;
+}
+@media only screen and (max-width: 768px){
+    .postEdit{
+        text-decoration: none;
+        color:black;
+        min-width:350px;
+    }
+    .delEditIcon{
+        width:30px;
+        margin: 0px 10px;
+    
+    }
 }
