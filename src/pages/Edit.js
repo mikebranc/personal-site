@@ -11,7 +11,7 @@ export default function edit(){
     const pageWrapper = {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        alignItems:'center',
     }
     const editWrapper = {
         display: 'flex',
@@ -38,7 +38,7 @@ export default function edit(){
     }
 
     return(
-        <div className={pageWrapper}>
+        <div style={pageWrapper}>
             <h1 style={heading}>Michael Branconier</h1>
             <div style={editWrapper}>
                 <h3 style={{fontSize:'25px'}}>What would you like to edit?</h3>
