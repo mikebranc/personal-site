@@ -2,7 +2,9 @@ import React from "react"
 import Navbar from "../Components/Navbar";
 import '../blogAll.css'
 import Footer from "../Components/Footer/Footer";
-import BlogList from "../Components/BlogList";
+import DataList from "../Components/DataList";
+import dummyBlogData from "../dummyBlogData";
+
 
 export default function BlogAll(){
     return(
@@ -10,7 +12,7 @@ export default function BlogAll(){
             <Navbar />
             <div className="postsWrapperOuter">
                 <div className="postsWrapperInner">
-                    <BlogList/>
+                    <DataList data ={dummyBlogData} type="publicBlog"/>
                 </div> 
             </div>
             <Footer />

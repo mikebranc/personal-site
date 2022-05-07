@@ -1,5 +1,6 @@
 export default [
     {
+        id: 1,
         projectName: "Movie Critic",
         projectLink: "https://github.com/mikebranc/movieCritic",
         githubLink: "https://github.com/mikebranc/movieCritic",
@@ -7,6 +8,7 @@ export default [
         skills: ["Javascript", "React", "Firebase", "Material-UI"]
     },
     {
+        id: 2,
         projectName: "Personal Site",
         projectLink: "https://michaelbranconier.com",
         githubLink: "https://github.com/mikebranc/personal-site",
@@ -14,6 +16,7 @@ export default [
         skills: ["Javascript", "React", "Firebase"]
     },
     {
+        id: 3,
         projectName: "Menu Search",
         projectLink: "https://github.com/mikebranc/menu_search",
         githubLink: "https://github.com/mikebranc/menu_search",
@@ -21,6 +24,7 @@ export default [
         skills: ["Javascript", "React", "React-Bootstrap"]
     },
     {
+        id: 4,
         projectName: "Lazy lion Festival",
         projectLink: "https://www.loom.com/share/ea9dbd3d15114219aa4b9fa07c69a97d",
         githubLink: "https://github.com/mikebranc/sql-spotify-project-lazy-lion-fest",
