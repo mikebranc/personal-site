@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import {Link} from "react-router-dom";
 import '../blogAll.css';
 import trashCan from './images/trashCan.png';
@@ -13,8 +13,8 @@ export default function DataList(props){
     const output = data.map(entry =>{
         //Blog post also feeds to main blog page
         let title = ""
-        let subtitle =""
-        let slug =""
+        let subtitle = null
+        let slug = ""
 
         if(type==="blog" || type==="publicBlog"){
             title = entry.title
@@ -23,7 +23,7 @@ export default function DataList(props){
         }
         else if(type==="project"){
             title = entry.projectName
-            subtitle = entry.id
+            slug = entry.id
 
         }
         else if(type==="experience"){
@@ -39,7 +39,7 @@ export default function DataList(props){
                     <div className="postDiv">
                         <div>
                             <h1>{title}</h1>
-                            <h3>{subtitle}</h3>
+                            <h3>{subtitle && subtitle}</h3>
                         </div>
                     </div>
                 </Link>
