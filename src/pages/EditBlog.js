@@ -1,6 +1,7 @@
 import React from 'react'
-import BlogList from '../Components/BlogList'
+import DataList from '../Components/DataList'
 import {Link} from "react-router-dom";
+import dummyBlogData from "../dummyBlogData";
 
 
 
@@ -29,7 +30,7 @@ export default function EditBlog(){
             <h1 style ={nameHeading}>Michael Branconier</h1>
             <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
             <div style={blogWrapper}>
-                    <BlogList edit={true}/>
+                    <DataList type={"blog"} data ={dummyBlogData}/>
             </div>
         </div>
 

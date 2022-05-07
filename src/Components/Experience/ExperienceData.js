@@ -1,4 +1,5 @@
 export default [{
+    id: 1,
     position: "Director of Operations & Partner",
     company: "Alden Pacific Investments",
     location: "Santa Monica, CA",
@@ -14,6 +15,7 @@ export default [{
     ]
 },
 {
+    id: 2,
     position: "Business Analyst",
     company: "Griddy Energy",
     location: "Playa Vista, CA",
@@ -27,6 +29,7 @@ export default [{
     ]
 },
 {
+    id: 3,
     position: "Cabin Counselor & Sailing Instructor",
     company: "Catalina Island Camps",
     location: "Avalon, CA",
