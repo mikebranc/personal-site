@@ -15,6 +15,7 @@ import EditProject from './pages/EditProject';
 import EditExperience from './pages/EditExperience';
 import EditBlogDetail from './pages/EditBlogDetail';
 import EditExperienceDetail from './pages/EditExperienceDetail';
+import EditProjectDetail from './pages/EditProjectDetail';
 
 function App() {
   return (
@@ -27,10 +28,11 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path ="/edit" element ={<Edit />} />
           <Route path ="/edit/blog" element ={<EditBlog />} />
+          <Route path = "/edit/blog/:blogId" element ={<EditBlogDetail />} />
           <Route path ="/edit/project" element ={<EditProject />} />
+          <Route path = "/edit/project/:projectId" element ={<EditProjectDetail />} />
           <Route path ="/edit/experience" element ={<EditExperience />} />
           <Route path = "/edit/experience/:experienceId" element ={<EditExperienceDetail/>} />
-          <Route path = "/edit/blog/:blogId" element ={<EditBlogDetail />} />
         </Routes>
       </div>
     </Router>
