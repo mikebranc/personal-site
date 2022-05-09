@@ -14,8 +14,7 @@ import EditBlog from './pages/EditBlog';
 import EditProject from './pages/EditProject';
 import EditExperience from './pages/EditExperience';
 import EditBlogDetail from './pages/EditBlogDetail';
-
-//https://reactrouter.com/docs/en/v6/getting-started/tutorial#reading-url-params
+import EditExperienceDetail from './pages/EditExperienceDetail';
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
           <Route path ="/edit/blog" element ={<EditBlog />} />
           <Route path ="/edit/project" element ={<EditProject />} />
           <Route path ="/edit/experience" element ={<EditExperience />} />
+          <Route path = "/edit/experience/:experienceId" element ={<EditExperienceDetail/>} />
           <Route path = "/edit/blog/:blogId" element ={<EditBlogDetail />} />
         </Routes>
       </div>
