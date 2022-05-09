@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
-import '../editBlogDetail.css'
+import '../editDetail.css'
 import {Link} from "react-router-dom";
 
 export default function(){
@@ -27,10 +27,10 @@ export default function(){
     }
 
     return(
-        <div className="editBlog">
+        <div className="editOuter">
             <h1 className='nameHeading'>Michael Branconier</h1>
             <Link to={`/edit/blog/`} style={{color:'white'}}>Back to Blog</Link>
-            <div className ="editBlogWrapper">
+            <div className ="editWrapper">
                 <form onSubmit ={handleSubmit} className ="formWrapper">
                     <label>Post Name</label>
                     <input 
@@ -38,7 +38,7 @@ export default function(){
                         name="postName"
                         value={blogData.postName}
                         onChange={handleChange}
-                        className="postName"
+                        className="formInputFull"
                     />
                     <label>Post Body</label>
                     <span>All text is formatted with <a className ="markDownLink" href="https://www.markdownguide.org/basic-syntax/">markdown</a>
@@ -47,7 +47,7 @@ export default function(){
                         name="postBody"
                         value={blogData.postBody}
                         onChange={handleChange}
-                        className="postBody"
+                        className="formBody"
                     />
                     <span style={{fontWeight: "bold", marginBottom: '15px'}}>Where would you like to publish? </span>
                     <div className = "checkboxWrapper">
