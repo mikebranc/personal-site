@@ -10,9 +10,8 @@ export default function EditBlog(){
     return(
         <div className = "pageWrapper">
             <h1 className = "nameHeading">Michael Branconier</h1>
-            <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
             <div className="sectionWrapper">
-                    <DataList type={"blog"} data ={dummyBlogData}/>
+                <DataList type={"blog"} data ={dummyBlogData}/>
             </div>
         </div>
 
