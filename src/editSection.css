@@ -16,3 +16,15 @@
     align-items: center;
 
 }
+.newButton{
+    background-color:white;
+     padding:15px; 
+     color:black; 
+     border-radius:10px;
+}
+.editSectionHeader{
+    display:flex;
+    width:100%; 
+    justify-content: space-between;
+    align-items: center;
+}

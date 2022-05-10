@@ -38,7 +38,7 @@ export default function DataList(props){
                 <Link to={`/blog/${slug}`} className="post" key = {slug}>
                     <div className="postDiv">
                         <div>
-                            <h1>{title}</h1>
+                            <h1 className="title">{title}</h1>
                             <h3>{subtitle && subtitle}</h3>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export default function DataList(props){
             <Link to={`/edit/${type}/${slug}`} className="postEdit" key = {slug}>
                 <div className="postDiv">
                     <div>
-                        <h1>{title}</h1>
+                        <h1 className="title">{title}</h1>
                         <h3>{subtitle}</h3>
                     </div>
                     <div className="delEditWrapper">
@@ -66,6 +66,12 @@ export default function DataList(props){
     })
     return(
         <>
+        <div className = "editSectionHeader">
+            <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
+            <Link to = {`/edit/${type}/new`} style={{color:'white', marginBottom:'20px'}}>
+                <div className ="newButton" >New {type}</div>
+            </Link>
+        </div>
         {output}
         </>
     )

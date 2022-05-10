@@ -9,6 +9,7 @@ export default function(){
     const [blogData, setBlogData] = useState({
         postName: '',
         postBody:'',
+        slug:'',
         publishMedium:false,
         publishWebsite:false
     })
@@ -37,6 +38,14 @@ export default function(){
                         type="text"
                         name="postName"
                         value={blogData.postName}
+                        onChange={handleChange}
+                        className="formInputFull"
+                    />
+                    <label>Slug</label>
+                    <input 
+                        type="text"
+                        name="slug"
+                        value={blogData.slug}
                         onChange={handleChange}
                         className="formInputFull"
                     />
