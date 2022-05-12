@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
+import { firestore } from '../firebase/config'
+import { collection, getDocs } from 'firebase/firestore';
 
 
-export default function edit(){
 
+export default function Edit(){
+
+    console.log(process.env.FIREBASE_API_KEY)
     const heading = {
         fontFamily: 'Kaushan Script, cursive',
         textAlign: 'center'
@@ -36,6 +40,29 @@ export default function edit(){
         border:'none',
         fontWeight:'medium'
     }
+
+    const [loading, setLoading] = useState(false)
+    const[expData, setExpData] = useState()
+
+    //console.log(expData)
+
+    // useEffect(() => {
+    //     setLoading(true)
+    //     const getExp = async () => {
+    //       try {
+    //         const expCol = collection(firestore, 'experience')
+    //         const querySnapshot = await getDocs(expCol);
+    //         querySnapshot.forEach((doc) => {
+    //             console.log(doc.data)
+    //         //   setExpData({...doc.data()})
+    //         });
+    //         setLoading(false)
+    //       } catch (error) {
+    //         throw error.message
+    //       }
+    //     }
+    //     getExp()
+    //   }, [])
 
     return(
         <div style={pageWrapper}>
