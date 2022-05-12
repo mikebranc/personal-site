@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
+import { firestore } from '../firebase/config'
+import { collection, getDocs } from 'firebase/firestore';
 
 
-export default function edit(){
+
+export default function Edit(){
 
     const heading = {
         fontFamily: 'Kaushan Script, cursive',
@@ -36,6 +39,27 @@ export default function edit(){
         border:'none',
         fontWeight:'medium'
     }
+
+    const [loading, setLoading] = useState(false)
+    
+    //test firebase equery
+    useEffect(() => {
+        setLoading(true)
+        const getExp = async () => {
+          try {
+            const expCol = collection(firestore, 'experience')
+            const querySnapshot = await getDocs(expCol);
+            querySnapshot.forEach((doc) => {
+                console.log(doc.data())
+            //   setExpData({...doc.data()})
+            });
+            setLoading(false)
+          } catch (error) {
+            throw error.message
+          }
+        }
+        getExp()
+      }, [])
 
     return(
         <div style={pageWrapper}>
