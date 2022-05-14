@@ -40,26 +40,6 @@ export default function Edit(){
         fontWeight:'medium'
     }
 
-    const [loading, setLoading] = useState(false)
-    
-    //test firebase equery
-    useEffect(() => {
-        setLoading(true)
-        const getExp = async () => {
-          try {
-            const expCol = collection(firestore, 'experience')
-            const querySnapshot = await getDocs(expCol);
-            querySnapshot.forEach((doc) => {
-                console.log(doc.data())
-            //   setExpData({...doc.data()})
-            });
-            setLoading(false)
-          } catch (error) {
-            throw error.message
-          }
-        }
-        getExp()
-      }, [])
 
     return(
         <div style={pageWrapper}>
