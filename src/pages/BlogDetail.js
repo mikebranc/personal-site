@@ -1,15 +1,18 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import Navbar from "../Components/Navbar"
 import ReactMarkdown from "react-markdown"
 import '../blogDetail.css'
 import Footer from "../Components/Footer/Footer"
+import { collection, query, getDocs, where} from "firebase/firestore"
+import { firestore } from "../firebase/config"
 
 
 
 
 export default function BlogDetail(){
     const {blogId} = useParams()
+    //keep for markdown formatting in future
     const blogData = 
     {title: "My Fake Blog Post",
     date:"4-20-22",
@@ -27,12 +30,31 @@ When you're operating on the maker's schedule, meetings are a disaster. A single
 
 For someone on the maker's schedule, having a meeting is like throwing an exception. It doesn't merely cause you to switch from one task to another; it changes the mode in which you work. `,
     }
-    const [blog, setBlog] = useState(blogData)
+    const [blog, setBlog] = useState()
+    const[loading, setLoading] = useState()
+
+    useEffect(() =>{
+        setLoading(true)
+        const getBlog = async () => {
+            try{
+                const postRef = query(collection(firestore, "blog"), where("slug", "==", blogId))
+                const postDocs = await getDocs(postRef)
+                //Shows several results, but we should only have one entry for each slug. 
+                //We will write rules to enforce this
+                postDocs.forEach(doc => setBlog(doc.data()))
+            }
+            catch(error){
+                throw error.message
+            }
+        }
+        getBlog()
+    },[])
+
 
     return(
         <div>
             <Navbar />
-            <div className="blogPostWrapperOuter"> 
+            {blog && <div className="blogPostWrapperOuter"> 
                 <div className="blogPostWrapperInner">
                     <h1 className="blogDetailHeading">{blog.title}</h1>
                     <span className="blogDetailDate">{blog.date}</span>
@@ -44,7 +66,7 @@ For someone on the maker's schedule, having a meeting is like throwing an except
                         <button className="mediumButton">Read on Medium</button>
                     </a>
                 </div>
-            </div>
+            </div>}
             <Footer />
         </div>
     )

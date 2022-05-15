@@ -19,9 +19,9 @@ export default function Projects(){
         getData("project", setProjData, setLoading)
       }, [])
 
-    const projectInfo = projData?.map((project, index) =>{
+    const projectInfo = projData?.map((project) =>{
         return(  
-            <a className="projectLinkBlock" href={project.projectLink} key ={index}>
+            <a className="projectLinkBlock" href={project.projectLink} key ={project.id}>
                 <div className="projectWrapper" >
                     <div className="projectHead">
                         <h3 className="projectName">{project.projectName}</h3>
