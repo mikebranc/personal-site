@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react"
 import SectionBlock from "../SectionBlock"
 import ExperienceData from "./ExperienceData"
 import './Experience.css'
-import { firestore } from "../../firebase/config"
-import { collection, getDocs } from "firebase/firestore"
+import { getData } from "../../dbHelpers"
 
 export default function Experience(){
     const [showExpereince, setShowExperience] = useState(false)
@@ -12,25 +11,8 @@ export default function Experience(){
     
     useEffect(() => {
         setLoading(true)
-        const getExp = async () => {
-          try {
-            const expCol = collection(firestore, 'experience')
-            const querySnapshot = await getDocs(expCol);
-            const data = []
-            querySnapshot.forEach((item) => {
-                //onsole.log(doc.data())
-                data.push({
-                    id: item.id,
-                    ...item.data()
-                })
-            });
-            setExpData([...data])
-            setLoading(false)
-          } catch (error) {
-            throw error.message
-          }
-        }
-        getExp()
+        //imported function to call DB
+        getData("experience", setExpData, setLoading)
       }, [])
  
     const experiences = expData?.map(exp => {
