@@ -10,7 +10,7 @@ export default function DataList(props){
     //edit is used only 
     let { data, type} = props
 
-    const output = data.map(entry =>{
+    const output = data?.map(entry =>{
         //Blog post also feeds to main blog page
         let title = ""
         let subtitle = null
@@ -66,12 +66,13 @@ export default function DataList(props){
     })
     return(
         <>
+        {type!== "publicBlog" && 
         <div className = "editSectionHeader">
             <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
             <Link to = {`/edit/${type}/new`} style={{color:'white', marginBottom:'20px'}}>
-                <div className ="newButton" >New {type}</div>
+                 <div className ="newButton" >New {type}</div>
             </Link>
-        </div>
+        </div>}
         {output}
         </>
     )
