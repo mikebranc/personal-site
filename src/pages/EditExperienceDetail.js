@@ -1,19 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import '../editDetail.css'
+import { firestore } from '../firebase/config';
+import { collection,addDoc, setDoc,doc } from 'firebase/firestore';
 
 
 export default function EditExperienceDetail(){
+    const {experienceId} = useParams()
+    const [currExperienceId, setCurrExperienceId] = useState(experienceId)
+    const[loading, setLoading] = useState()
     const [experienceData, setExperienceData] = useState({
         position: "",
-        companyName: "",
+        company: "",
         location: "",
         startDate: "",
         endDate: "",
-        jobDescription:""
+        description:""
     })
-    
+    const [submitted, setSubmitted] = useState()
+    console.log(submitted)
     const handleChange = (event) =>{
         const {value, name} = event.target
         setExperienceData( prevExpData => {
@@ -23,8 +29,32 @@ export default function EditExperienceDetail(){
             }
         })
     }
+
+
+    //to do
+        //get data from db for existing jobs and update text fields
+        //I think you just have to call setExpereinceData and then those values should auto propogate
     const handleSubmit =(event) =>{
         event.preventDefault()
+        const updateExp = async() =>{
+            if(currExperienceId === "new"){
+                const currentDescription = experienceData.description !== "" ?  experienceData.description.split(";") : ""
+                const expRef = await addDoc(
+                    collection(firestore, "experience"),
+                    {
+                        ...experienceData,
+                        description: currentDescription
+                    }
+                )
+                console.log("Document written with ID: ", expRef.id);
+                setCurrExperienceId(expRef.id)
+            }
+            //todo
+                //if not new, update existing doc
+                //will need to read curr exp, fill out form fields and then update on save   
+            setSubmitted(new Date().toString())
+        }
+        updateExp()
         console.log(experienceData)
     }
 
@@ -45,9 +75,9 @@ export default function EditExperienceDetail(){
                     <label>Company Name</label>
                     <input
                         type = "text"
-                        name = "companyName"
+                        name = "company"
                         onChange = {handleChange}
-                        value = {experienceData.companyName}
+                        value = {experienceData.company}
                         className = "formInputFull"
                     />
                     <label>Location</label>
@@ -81,14 +111,16 @@ export default function EditExperienceDetail(){
                         </div>
                     </div>
                         
-                    <label>Job Description</label>
+                    <label>Job Description (Bullets Separated by semicolon)</label>
                     <textarea 
-                            name="jobDescription"
-                            value={experienceData.jobDescription}
+                            name="description"
+                            value={experienceData.description}
                             onChange={handleChange}
                             className="formBody"
                     />
+                    {submitted && <span>Submitted {submitted}</span>}
                     <button>Submit</button>
+                    
                 </form>
             </div>
         </div>
