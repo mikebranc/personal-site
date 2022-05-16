@@ -29,10 +29,7 @@ export default function EditExperienceDetail(){
             }
         })
     }
-
-    //to do
-        //get data from db for existing jobs and update text fields
-        //I think you just have to call setExpereinceData and then those values should auto propogate
+    
     useEffect(() => {
         setLoading(true)
         const getExperience = async () =>{
@@ -49,7 +46,7 @@ export default function EditExperienceDetail(){
                 throw error.message
             }
         }
-        getExperience()
+        if(experienceId !== "new") getExperience()
     }, [experienceId])
 
     const handleSubmit =(event) =>{

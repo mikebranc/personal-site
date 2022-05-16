@@ -1,14 +1,14 @@
-import React from "react"
+import React, {useState} from "react"
 import {Link} from "react-router-dom";
 import '../blogAll.css';
 import trashCan from './images/trashCan.png';
-import editPencil from './images/editPencil.png'
+import editPencil from './images/editPencil.png';
+
 
 export default function DataList(props){
     //type tells us if this is a blog, expereince, post, publicBlog 
     //all types are interenal edit displays except for publicBlog
-    //edit is used only 
-    let { data, type} = props
+    let { data, type, deleteFunction} = props
 
     const output = data?.map(entry =>{
         //Blog post also feeds to main blog page
@@ -47,7 +47,7 @@ export default function DataList(props){
         }
         //all other instances are edit instances and redirect to their respective edit page
         return(           
-            <Link to={`/edit/${type}/${slug}`} className="postEdit" key = {slug}>
+            <Link to={`/edit/${type}/${slug}`} className="postEdit" key = {entry.id}>
                 <div className="postDiv">
                     <div>
                         <h1 className="title">{title}</h1>
@@ -55,10 +55,9 @@ export default function DataList(props){
                     </div>
                     <div className="delEditWrapper">
                         <img className = "delEditIcon" src={editPencil} alt="edit button"/>
-                        <Link to={`/delete/${type}/${slug}`}> 
-                        {/* Using this as placeholder for delete functionality */}
+                        <div onClick ={(e)=>deleteFunction(e,entry.id,type)} > 
                             <img className = "delEditIcon" src={trashCan} alt="delete button"/>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </Link>
@@ -70,7 +69,7 @@ export default function DataList(props){
         <div className = "editSectionHeader">
             <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
             <Link to = {`/edit/${type}/new`} style={{color:'white', marginBottom:'20px'}}>
-                 <div className ="newButton" >New {type}</div>
+                 <div className ="newButton">New {type}</div>
             </Link>
         </div>}
         {output}
