@@ -2,30 +2,55 @@ import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import '../editDetail.css'
+import { firestore } from '../firebase/config';
+import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
 
 export default function EditProjectDetail(){
+    const {projectId} = useParams()
+    const [submitted, setSubmitted] = useState()
+    const [currProjId, setCurrProjId] = useState(projectId)
     const [projectData, setProjectData] = useState({
         name: "",
         description:"",
         link: "",
         githubLink:"",
-        tags:[]
+        skills:[]
     })
+    console.log(currProjId)
 
     const handleChange = (event) =>{
         const {value, name} = event.target
         setProjectData(prevProjData => {
             return {
                 ...prevProjData,
-                [name]: name === "tags" ? value.split(",") : value
+                [name]: name === "skills" ? value.split(",") : value
             }
         })
     }
 
-    const handleSubmit = (event) =>{
+    const handleSubmit =(event) =>{
         event.preventDefault()
-        console.log(typeof(projectData.tags))
-        console.log(projectData)
+        const updateProj = async() =>{
+            if(currProjId === "new"){
+                try{
+                    const projRef = await addDoc(collection(firestore, "project"),projectData)
+                    console.log("Document written with ID: ", projRef.id);
+                    setCurrProjId(projRef.id)
+                }catch(error){
+                    throw error.message
+                }
+            }
+            else{
+                try{
+                    await setDoc(doc(firestore, "experience",currProjId),projectData)
+                    console.log("Document Updated");
+                }catch(error){
+                    throw error.message
+                }
+            }   
+            setSubmitted(new Date().toString())
+        }
+        updateProj()
     }
     return (
         <div className="editOuter">
@@ -68,9 +93,9 @@ export default function EditProjectDetail(){
                     <label>Tags</label>
                     <input
                         type = "text"
-                        name = "tags"
+                        name = "skills"
                         onChange = {handleChange}
-                        value = {projectData.tags}
+                        value = {projectData.skills}
                         className = "formInputFull"
                     /> 
                     <button>Submit</button>

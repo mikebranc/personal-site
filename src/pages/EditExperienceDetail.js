@@ -83,7 +83,6 @@ export default function EditExperienceDetail(){
             setSubmitted(new Date().toString())
         }
         updateExp()
-        console.log(experienceData)
     }
 
     return(
