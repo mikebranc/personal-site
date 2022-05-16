@@ -22,7 +22,7 @@ export default function DataList(props){
             slug = entry.slug
         }
         else if(type==="project"){
-            title = entry.projectName
+            title = entry.name
             slug = entry.id
 
         }
