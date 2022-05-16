@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import '../editDetail.css'
 import { firestore } from '../firebase/config';
-import { collection,addDoc, setDoc,doc } from 'firebase/firestore';
+import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
 
 
 export default function EditExperienceDetail(){
     const {experienceId} = useParams()
+    //used to prevent new entries being created after initial doc is saved
     const [currExperienceId, setCurrExperienceId] = useState(experienceId)
     const[loading, setLoading] = useState()
     const [experienceData, setExperienceData] = useState({
@@ -19,7 +20,6 @@ export default function EditExperienceDetail(){
         description:""
     })
     const [submitted, setSubmitted] = useState()
-    console.log(submitted)
     const handleChange = (event) =>{
         const {value, name} = event.target
         setExperienceData( prevExpData => {
@@ -30,14 +30,33 @@ export default function EditExperienceDetail(){
         })
     }
 
-
     //to do
         //get data from db for existing jobs and update text fields
         //I think you just have to call setExpereinceData and then those values should auto propogate
+    useEffect(() => {
+        setLoading(true)
+        const getExperience = async () =>{
+            try{
+                const expRef = doc(firestore, "experience",experienceId)
+                const expDoc = await getDoc(expRef)
+                setExperienceData({
+                    ...expDoc.data(),
+                    description: expDoc.data().description.join(";")
+                })
+                setLoading(false)
+            }
+            catch(error){
+                throw error.message
+            }
+        }
+        getExperience()
+    }, [experienceId])
+
     const handleSubmit =(event) =>{
         event.preventDefault()
         const updateExp = async() =>{
             if(currExperienceId === "new"){
+                //add try and catch
                 const currentDescription = experienceData.description !== "" ?  experienceData.description.split(";") : ""
                 const expRef = await addDoc(
                     collection(firestore, "experience"),
@@ -49,9 +68,21 @@ export default function EditExperienceDetail(){
                 console.log("Document written with ID: ", expRef.id);
                 setCurrExperienceId(expRef.id)
             }
-            //todo
-                //if not new, update existing doc
-                //will need to read curr exp, fill out form fields and then update on save   
+            else{
+                try{
+                    const currentDescription = experienceData.description !== "" ?  experienceData.description.split(";") : ""
+                    const expRef = await setDoc(
+                        doc(firestore, "experience",currExperienceId),
+                        {
+                            ...experienceData,
+                            description: currentDescription
+                        }
+                    )
+                    console.log("Document Updated");
+                }catch(error){
+                    throw error.message
+                }
+            }   
             setSubmitted(new Date().toString())
         }
         updateExp()
