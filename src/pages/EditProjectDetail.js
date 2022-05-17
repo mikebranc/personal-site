@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import '../editDetail.css'
 import { firestore } from '../firebase/config';
 import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
+import { getFirestoreDocument } from '../dbHelpers';
 
 export default function EditProjectDetail(){
     const {projectId} = useParams()
     const [submitted, setSubmitted] = useState()
     const [currProjId, setCurrProjId] = useState(projectId)
+    const [loading, setLoading] = useState()
     const [projectData, setProjectData] = useState({
         name: "",
         description:"",
@@ -16,7 +18,11 @@ export default function EditProjectDetail(){
         githubLink:"",
         skills:[]
     })
-    console.log(currProjId)
+
+    useEffect(()=>{
+        setLoading(true)
+        if(currProjId !== "new") getFirestoreDocument(currProjId,setProjectData, setLoading,"project")
+    }, [])
 
     const handleChange = (event) =>{
         const {value, name} = event.target
@@ -42,7 +48,8 @@ export default function EditProjectDetail(){
             }
             else{
                 try{
-                    await setDoc(doc(firestore, "experience",currProjId),projectData)
+                    await setDoc(doc(firestore, "project",currProjId),projectData)
+                    console.log(projectData)
                     console.log("Document Updated");
                 }catch(error){
                     throw error.message
@@ -98,6 +105,7 @@ export default function EditProjectDetail(){
                         value = {projectData.skills}
                         className = "formInputFull"
                     /> 
+                    {submitted && <span>Updated {submitted}</span>}
                     <button>Submit</button>
                 </form>
             </div>

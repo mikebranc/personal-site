@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import ProjectData from './ProjectData';
 import github from '../images/github.png'
 import './Projects.css';
 import SectionBlock from '../SectionBlock';
-import { firestore } from '../../firebase/config';
-import { collection, getDocs } from "firebase/firestore"
-import { getData } from "../../dbHelpers"
+import { getFirestoreCollection } from "../../dbHelpers"
 
 export default function Projects(){
     const [showProjects, setShowProjects] = useState(false)
@@ -16,7 +13,7 @@ export default function Projects(){
     useEffect(() => {
         setLoading(true)
         //Uses db helper function
-        getData("project", setProjData, setLoading)
+        getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 
     const projectInfo = projData?.map((project) =>{
@@ -24,7 +21,7 @@ export default function Projects(){
             <a className="projectLinkBlock" href={project.projectLink} key ={project.id}>
                 <div className="projectWrapper" >
                     <div className="projectHead">
-                        <h3 className="projectName">{project.projectName}</h3>
+                        <h3 className="projectName">{project.name}</h3>
                         <a href={project.githubLink}>
                             <img className="projectGithubLink" src={github} alt="github Icon" />
                         </a> 
@@ -35,8 +32,6 @@ export default function Projects(){
                     </div>
                 </div>
             </a>
-            
-            
         )
     })
     return(

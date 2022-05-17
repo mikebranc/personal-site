@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import DataList from '../Components/DataList'
 import ProjectData from '../Components/Projects/ProjectData'
-import { Link } from 'react-router-dom'
 import "../editSection.css"
-import {getData} from "../dbHelpers"
+import {getFirestoreCollection} from "../dbHelpers"
 
 
 
@@ -14,7 +13,7 @@ export default function EditProject(){
     useEffect(() => {
         setLoading(true)
         //Uses db helper function
-        getData("project", setProjData, setLoading)
+        getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 
     return (
