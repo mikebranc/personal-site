@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import '../editDetail.css'
 import { firestore } from '../firebase/config';
 import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
+import { getFirestoreDocument } from '../dbHelpers';
 
 
 export default function EditExperienceDetail(){
@@ -32,21 +33,7 @@ export default function EditExperienceDetail(){
     
     useEffect(() => {
         setLoading(true)
-        const getExperience = async () =>{
-            try{
-                const expRef = doc(firestore, "experience",experienceId)
-                const expDoc = await getDoc(expRef)
-                setExperienceData({
-                    ...expDoc.data(),
-                    description: expDoc.data().description.join(";")
-                })
-                setLoading(false)
-            }
-            catch(error){
-                throw error.message
-            }
-        }
-        if(experienceId !== "new") getExperience()
+        if(experienceId !== "new") getFirestoreDocument(currExperienceId,setExperienceData, setLoading, "experience")
     }, [experienceId])
 
     const handleSubmit =(event) =>{

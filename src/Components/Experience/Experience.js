@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import SectionBlock from "../SectionBlock"
 import ExperienceData from "./ExperienceData"
 import './Experience.css'
-import { getData } from "../../dbHelpers"
+import { getFirestoreCollection } from "../../dbHelpers"
 
 export default function Experience(){
     const [showExpereince, setShowExperience] = useState(false)
@@ -12,7 +12,7 @@ export default function Experience(){
     useEffect(() => {
         setLoading(true)
         //imported function to call DB
-        getData("experience", setExpData, setLoading)
+        getFirestoreCollection("experience", setExpData, setLoading)
       }, [])
  
     const experiences = expData?.map(exp => {

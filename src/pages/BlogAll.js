@@ -4,7 +4,7 @@ import '../blogAll.css'
 import Footer from "../Components/Footer/Footer";
 import DataList from "../Components/DataList";
 import dummyBlogData from "../dummyBlogData";
-import { getData } from "../dbHelpers";
+import { getFirestoreCollection } from "../dbHelpers";
 
 
 export default function BlogAll(){
@@ -13,7 +13,7 @@ export default function BlogAll(){
 
     useEffect(() => {
         setLoading(true)
-        getData("blog", setBlogData, setLoading)
+        getFirestoreCollection("blog", setBlogData, setLoading)
     }, [])
 
     return(

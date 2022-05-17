@@ -4,7 +4,7 @@ import ExperienceData from '../Components/Experience/ExperienceData'
 import { Link } from 'react-router-dom'
 import "../editSection.css"
 import { firestore } from '../firebase/config'
-import { getData } from '../dbHelpers'
+import { getFirestoreCollection } from '../dbHelpers'
 import {doc, deleteDoc} from "firebase/firestore"
 
 export default function EditExperience(){
@@ -14,7 +14,7 @@ export default function EditExperience(){
     useEffect(() => {
         setLoading(true)
         //imported function to call DB
-        getData("experience", setExpData, setLoading)
+        getFirestoreCollection("experience", setExpData, setLoading)
       }, [])
     
      const handleDelete = (event, docId,type) =>{
