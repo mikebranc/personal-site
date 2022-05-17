@@ -1,12 +1,12 @@
 
 import { firestore } from "./firebase/config";
-import { collection, getDoc, getDocs, doc } from "firebase/firestore"
+import { collection, getDoc, getDocs, doc, deleteDoc } from "firebase/firestore"
 
 /*
-Helper function to reduce code written for calls to DB
+Helper function to reduce code written for collection calls to DB
 
 Parameters:
-collectionType - the name of the collection in the db
+collectionName - the name of the collection in the db
 stateSetter - the function used to update the state of the data being called (i.e. setExpereince)
 loadingFunction - loading function used when making db calls, typically setLoading for this app
 
@@ -33,6 +33,20 @@ const getFirestoreCollection = async (collectionName, stateSetter, loadingFuncti
     }
 }
 
+/*
+Helper function to reduce code written for document calls to DB
+
+Parameters:
+documentId - the document we're trying to get
+stateSetter - the function used to update the state of the data being called (i.e. setExpereince)
+loadingFunction - loading function used when making db calls, typically setLoading for this app
+collectionName - the name of the collection in the db
+
+
+Return:
+Void, should update state with stateSetter function passed in
+
+*/
 const getFirestoreDocument = async(documentId, stateSetter, loadingFunction, collectionName) =>{
   try{
     const docRef = doc(firestore, collectionName, documentId)
@@ -52,5 +66,18 @@ const getFirestoreDocument = async(documentId, stateSetter, loadingFunction, col
   }
 }
 
+const deleteFirestoreDocument = async(documentId, stateSetter, loadingFunction, collectionName) =>{
+  try{
+      await deleteDoc(doc(firestore, collectionName, documentId))
+      stateSetter(oldData =>{
+          return oldData.filter(curr => curr.id !== documentId)
+      })
+      loadingFunction(false)
+  }
+  catch(error){   
+      throw error.message
+  }
+}
 
-export {getFirestoreCollection, getFirestoreDocument}
+
+export {getFirestoreCollection, getFirestoreDocument, deleteFirestoreDocument}
