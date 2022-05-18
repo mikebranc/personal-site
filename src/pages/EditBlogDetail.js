@@ -1,15 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../editDetail.css'
 import {Link} from "react-router-dom";
+import { addDoc, setDoc, collection,doc } from 'firebase/firestore';
+import { firestore } from '../firebase/config';
 
 export default function(){
     const {blogId}  = useParams()
+    const[loading, setLoading] = useState()
+    const[currBlogId, setCurrBlogId] = useState(blogId)
+    const [submitted, setSubmitted] = useState()
 
     const [blogData, setBlogData] = useState({
-        postName: '',
-        postBody:'',
+        title: '',
+        body:'',
         slug:'',
+        date:'',
         publishMedium:false,
         publishWebsite:false
     })
@@ -22,9 +28,36 @@ export default function(){
             }
         })
     }
+
     const handleSubmit = (event) =>{
         event.preventDefault()
-        console.log(blogData)
+        const updateBlog = async() =>{
+            //will also need to upload blog post body as markdown
+            if(currBlogId === "new"){
+                //add try and catch
+                let currDate = new Date()
+                let day = currDate.getDate()
+                let year = currDate.getFullYear()
+                let month = currDate.getMonth()+1
+                const formattedDate = [month,day,year].join("-")
+
+                blogData.date = formattedDate
+                const blogRef = await addDoc(collection(firestore, "blog"),blogData)
+
+                console.log("Document written with ID: ", blogRef.id);
+                setCurrBlogId(blogRef.id)
+            }
+            else{
+                try{
+                    const blogRef = await setDoc(doc(firestore, "experience",currBlogId),blogData)
+                    console.log("Document Updated");
+                }catch(error){
+                    throw error.message
+                }
+            }   
+            setSubmitted(new Date().toString())
+        }
+        updateBlog()
     }
 
     return(
@@ -36,8 +69,8 @@ export default function(){
                     <label>Post Name</label>
                     <input 
                         type="text"
-                        name="postName"
-                        value={blogData.postName}
+                        name="title"
+                        value={blogData.title}
                         onChange={handleChange}
                         className="formInputFull"
                     />
@@ -53,8 +86,8 @@ export default function(){
                     <span>All text is formatted with <a className ="markDownLink" href="https://www.markdownguide.org/basic-syntax/">markdown</a>
                     </span>
                     <textarea 
-                        name="postBody"
-                        value={blogData.postBody}
+                        name="body"
+                        value={blogData.body}
                         onChange={handleChange}
                         className="formBody"
                     />
@@ -78,7 +111,7 @@ export default function(){
                         <label className="checkboxLabel" htmlfor="publishWebsite">Website</label>
                     </div>
 
-
+                    {submitted && <span>Post Updated {submitted}</span>}
                     <button>Publish</button>
                 </form>
             </div>
