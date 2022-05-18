@@ -47,7 +47,7 @@ export default function DataList(props){
         }
         //all other instances are edit instances and redirect to their respective edit page
         return(           
-            <Link to={`/edit/${type}/${slug}`} className="postEdit" key = {entry.id}>
+            <Link to={`/edit/${type}/${entry.id}`} className="postEdit" key = {entry.id}>
                 <div className="postDiv">
                     <div>
                         <h1 className="title">{title}</h1>
