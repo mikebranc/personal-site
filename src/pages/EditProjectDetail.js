@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import '../editDetail.css'
-import { firestore } from '../firebase/config';
+import { firestore,auth } from '../firebase/config';
 import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
 import { getFirestoreDocument } from '../dbHelpers';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function EditProjectDetail(){
     const {projectId} = useParams()
@@ -33,6 +34,13 @@ export default function EditProjectDetail(){
             }
         })
     }
+
+    const [user, loadingAuth, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (loadingAuth) return ;
+        if (!user) return navigate("/");
+      }, [user, loadingAuth]);
 
     const handleSubmit =(event) =>{
         event.preventDefault()

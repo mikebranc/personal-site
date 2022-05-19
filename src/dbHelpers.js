@@ -79,7 +79,4 @@ const deleteFirestoreDocument = async(documentId, stateSetter, loadingFunction, 
   }
 }
 
-
-
-
 export {getFirestoreCollection, getFirestoreDocument, deleteFirestoreDocument}

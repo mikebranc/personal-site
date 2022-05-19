@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import '../editDetail.css'
-import { firestore } from '../firebase/config';
+import { firestore, auth } from '../firebase/config';
 import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
 import { getFirestoreDocument } from '../dbHelpers';
+import { useAuthState } from "react-firebase-hooks/auth";
+
 
 
 export default function EditExperienceDetail(){
@@ -71,6 +73,14 @@ export default function EditExperienceDetail(){
         }
         updateExp()
     }
+
+    const [user, loadingAuth, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (loadingAuth) return ;
+        if (!user) return navigate("/");
+      }, [user, loadingAuth]);
 
     return(
         <div className="editOuter">

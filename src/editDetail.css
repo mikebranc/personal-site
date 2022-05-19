@@ -4,7 +4,6 @@
     align-items:flex-start;
 }
 .editWrapper{
-    height:100vh;
     display:flex;
     justify-content: center;
     padding: 60px 0px 0px;

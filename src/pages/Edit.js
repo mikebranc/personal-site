@@ -1,60 +1,34 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from "react-router-dom"
-import { firestore } from '../firebase/config'
-import { collection, getDocs } from 'firebase/firestore';
+import {Link, useNavigate} from "react-router-dom"
+import {auth } from '../firebase/config'
+import { useAuthState } from "react-firebase-hooks/auth";
+import "../edit.css"
 
 
 
 export default function Edit(){
 
-    const heading = {
-        fontFamily: 'Kaushan Script, cursive',
-        textAlign: 'center'
-    }
-    const pageWrapper = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems:'center',
-    }
-    const editWrapper = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems:'center',
-        justifyContent:'center',
-        height:'80vh'
-
-    }
-    const linkWrapper = {
-        display:'flex',
-        justifyContent: 'space-between'
-    }
-    const editButton = {
-        padding:'10px',
-        borderRadius:'none',
-        fontFamily: 'Raleway, sans-seriff',
-        margin: '0px 5px 0px 5px',
-        width:'150px',
-        fontSize:'20px',
-        borderRadius:'10px',
-        border:'none',
-        fontWeight:'medium'
-    }
-
+    const [user, loading, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/");
+      }, [user, loading]);
 
     return(
-        <div style={pageWrapper}>
-            <h1 style={heading}>Michael Branconier</h1>
-            <div style={editWrapper}>
+        <div className="pageWrapper">
+            <h1 className="heading">Michael Branconier</h1>
+            <div className="editPageWrapper">
                 <h3 style={{fontSize:'25px'}}>What would you like to edit?</h3>
-                <div style = {linkWrapper}>
+                <div className = "linkWrapper">
                     <Link to="/edit/blog">
-                        <button style={editButton}>Blog</button>
+                        <button className="editButton">Blog</button>
                     </Link>
                     <Link to="/edit/experience">
-                        <button style={editButton}>Experience</button>
+                        <button className="editButton">Experience</button>
                     </Link>
                     <Link to="/edit/project">
-                        <button style={editButton}>Projects</button>
+                        <button className="editButton">Projects</button>
                     </Link>
                 </div>
             </div>

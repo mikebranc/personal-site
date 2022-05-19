@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import DataList from '../Components/DataList'
-import {Link} from "react-router-dom";
-import dummyBlogData from "../dummyBlogData";
+import {useNavigate} from "react-router-dom";
+import {auth } from '../firebase/config'
+import { useAuthState } from "react-firebase-hooks/auth";
 import { getFirestoreCollection } from '../dbHelpers';
 import { deleteFirestoreDocument } from '../dbHelpers';
 
@@ -10,6 +11,13 @@ import { deleteFirestoreDocument } from '../dbHelpers';
 export default function EditBlog(){
     const [loading, setLoading] = useState()
     const [blogData, setBlogData] = useState()
+
+    const [user, loadingAuth, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (loadingAuth) return;
+        if (!user) return navigate("/");
+      }, [user, loadingAuth]);
 
     useEffect(()=>{
         setLoading(true)
