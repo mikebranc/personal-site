@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../editDetail.css'
 import {Link} from "react-router-dom";
-import { addDoc, setDoc, collection,doc } from 'firebase/firestore';
+import { addDoc, setDoc, collection,doc, query, where, getDocs } from 'firebase/firestore';
 import { firestore } from '../firebase/config';
+import { getFirestoreDocument } from '../dbHelpers';
 
 export default function(){
     const {blogId}  = useParams()
@@ -29,6 +30,27 @@ export default function(){
         })
     }
 
+    useEffect(() =>{
+        setLoading(true)
+        if(currBlogId !== "new") getFirestoreDocument(currBlogId, setBlogData, setLoading, "blog")
+        //try using getFirestoreDocument function
+        // const getBlog = async () => {
+        //     try{
+        //         const postRef = query(collection(firestore, "blog"), where("slug", "==", blogId))
+        //         const postDocs = await getDocs(postRef)
+        //         //Shows several results, but we should only have one entry for each slug. 
+        //         //We will write rules to enforce this
+        //         postDocs.forEach(post => setBlogData(post.data()))
+        //         setLoading(false)
+        //     }
+        //     catch(error){
+        //         throw error.message
+        //     }
+        // }
+        // getBlog()
+    },[])
+ 
+
     const handleSubmit = (event) =>{
         event.preventDefault()
         const updateBlog = async() =>{
@@ -49,7 +71,7 @@ export default function(){
             }
             else{
                 try{
-                    const blogRef = await setDoc(doc(firestore, "experience",currBlogId),blogData)
+                    const blogRef = await setDoc(doc(firestore, "blog",currBlogId),blogData)
                     console.log("Document Updated");
                 }catch(error){
                     throw error.message
