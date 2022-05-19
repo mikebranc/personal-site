@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react'
 import DataList from '../Components/DataList'
 import "../editSection.css"
 import { getFirestoreCollection,deleteFirestoreDocument } from '../dbHelpers'
+import {useNavigate} from "react-router-dom"
+import {auth } from '../firebase/config'
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function EditExperience(){
     const [expData, setExpData] = useState()
@@ -18,6 +21,15 @@ export default function EditExperience(){
         setLoading(true)
         deleteFirestoreDocument(docId, setExpData, setLoading, type)
     }
+
+    const [user, loadingAuth, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (loadingAuth) return ;
+        if (!user) return navigate("/");
+      }, [user, loadingAuth]);
+      
 return(
     <div className = "pageWrapper">
         <h1 className = "nameHeading">Michael Branconier</h1>

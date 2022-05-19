@@ -1,0 +1,32 @@
+.heading{
+    font-family: Kaushan Script, cursive;
+    text-align: center;
+}
+.pageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.editPageWrapper{
+    height:80vh;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+}
+.linkWrapper{
+    display:flex;
+    justify-content: space-between;
+}
+.editButton{
+    padding:10px;
+    border-radius:none;
+    font-family: Raleway, sans-seriff;
+    margin: 0px 5px 0px 5px;
+    width:150px;
+    font-size:20px;
+    border-radius:10px;
+    border:none;
+    font-weight:medium;
+}

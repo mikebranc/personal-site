@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../editDetail.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { addDoc, setDoc, collection,doc, query, where, getDocs } from 'firebase/firestore';
-import { firestore } from '../firebase/config';
+import { firestore, auth } from '../firebase/config';
 import { getFirestoreDocument } from '../dbHelpers';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function(){
     const {blogId}  = useParams()
@@ -29,6 +30,14 @@ export default function(){
             }
         })
     }
+
+    const [user, loadingAuth, error ] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (loadingAuth) return ;
+        if (!user) return navigate("/");
+      }, [user, loadingAuth]);
 
     useEffect(() =>{
         setLoading(true)
