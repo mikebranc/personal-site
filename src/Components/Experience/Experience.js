@@ -30,7 +30,7 @@ export default function Experience(){
     return(
         <div>
             <div onClick={()=>setShowExperience(prevState => !prevState)} className="sectionBlockWrapper">
-                <SectionBlock sectionName="EXPERIENCE"/>
+                <SectionBlock sectionName="EXPERIENCE" open={showExpereince}/>
             </div>
             {
             showExpereince && experiences

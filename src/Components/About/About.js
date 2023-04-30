@@ -9,7 +9,7 @@ export default function About(){
     return(
         <div>
             <div onClick={()=>setShowAbout(prevState => !prevState)} className="sectionBlockWrapper">
-                <SectionBlock sectionName="ABOUT"/>
+                <SectionBlock sectionName="ABOUT" open={showAbout}/>
             </div>
             {showAbout &&
                 <div className="aboutContentWrapper">
