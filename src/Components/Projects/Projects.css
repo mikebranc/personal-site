@@ -19,12 +19,13 @@
     display:flex;
     justify-content: space-between;
 }
-.projectSectionWrapper{
+.projectSectionGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 65px; 
     column-gap:15px;
-    margin: 20px 0px 50px 0px;
+    height: auto;
+    margin: 20px 0px 70px 0px;
 }
 .projectName{
     margin: 0px;

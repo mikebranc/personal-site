@@ -37,11 +37,13 @@ export default function Projects(){
     return(
         <div>
             <div onClick={()=>setShowProjects(prevState => !prevState)} className="sectionBlockWrapper">
-                <SectionBlock sectionName="PROJECTS"/>
+                <SectionBlock sectionName="PROJECTS" open={showProjects}/>
             </div>
-            <div className="projectSectionWrapper">
-            {showProjects && projectInfo}
-            </div>
+            {showProjects && (
+                <div className="projectSectionGrid">
+                 {projectInfo}
+                </div>
+            )}
         </div>
         
     )
