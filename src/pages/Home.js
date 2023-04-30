@@ -13,10 +13,10 @@ export default function Home() {
       <Navbar/>
       <div className="homeWrapper">
         <About />
-        <Education />
+        <Projects />
         <Experience />
         <Skills />
-        <Projects />
+        <Education />
         <Footer />
       </div>
     </div>

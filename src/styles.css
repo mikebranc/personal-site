@@ -35,11 +35,10 @@ body{
 .sectionBlock{
     display:flex;
     align-items: center;
-    justify-content: center;
-    background-color: #FAFAFA;
+    justify-content: space-between;
     line-height: 62px;
     border-radius: 10px;
-    padding: 18px 0px;
+    padding: 18px;
 }
 .homeWrapper{
     padding: 40px 100px;

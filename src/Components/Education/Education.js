@@ -7,7 +7,7 @@ export default function Education(){
     return(
         <div>
             <div onClick={()=>setShowEducation(prevState => !prevState)} className="sectionBlockWrapper">
-                <SectionBlock sectionName="EDUCATION"/>
+                <SectionBlock sectionName="EDUCATION" open={showEducation}/>
             </div>
             { showEducation &&
             <div className="educationWrapper">

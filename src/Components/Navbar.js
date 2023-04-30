@@ -8,7 +8,9 @@ export default function Navbar() {
             <Link to="/" id ="nameLink" className="navLink">Michael Branconier</Link>
             <div className="navLinkWrapper">
                 <Link to="/" className="navLink">Home</Link>
-                <Link to="/blog" className ="navLink">Blog</Link>
+                <a href="https://medium.com/@michaelbranconier" className="navLink" target='_blank' rel="noopener noreferrer">
+                    Blog
+                </a>
             </div>
         </nav>
     );

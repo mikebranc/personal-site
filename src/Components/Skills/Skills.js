@@ -20,7 +20,7 @@ export default function Skills(){
     return (
         <div>
             <div onClick={()=>setShowSkills(prevState => !prevState)} className="sectionBlockWrapper">
-                <SectionBlock sectionName="SKILLS"/>
+                <SectionBlock sectionName="SKILLS" open={showSkills}/>
             </div>
             <div className="skillsWrapper">
                 {showSkills && skillsInfo}
