@@ -16,7 +16,9 @@ export default function Projects(){
         getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 
-    const projectInfo = projData?.map((project) =>{
+      const sortedProjData = projData?.sort((a,b) => a.order - b.order)
+
+    const projectInfo = sortedProjData?.map((project) =>{
         return(  
             <a className="projectLinkBlock" href={project.projectLink} key ={project.id}>
                 <div className="projectWrapper" >

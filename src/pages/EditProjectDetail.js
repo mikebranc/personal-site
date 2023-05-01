@@ -17,7 +17,8 @@ export default function EditProjectDetail(){
         description:"",
         link: "",
         githubLink:"",
-        skills:[]
+        skills:[],
+        order: "",
     })
 
     useEffect(()=>{
@@ -82,12 +83,12 @@ export default function EditProjectDetail(){
                         className = "formInputFull"
                     />
                     <label>Project Description</label>
-                    <input
-                        type = "text"
+                    <textarea
                         name = "description"
                         onChange = {handleChange}
                         value = {projectData.description}
                         className = "formInputFull"
+                        placeholder='Keep brief'
                     />
                     <label>Project Link</label>
                     <input
@@ -111,6 +112,14 @@ export default function EditProjectDetail(){
                         name = "skills"
                         onChange = {handleChange}
                         value = {projectData.skills}
+                        className = "formInputFull"
+                    /> 
+                    <label>Order</label>
+                    <input
+                        type = "text"
+                        name = "order"
+                        onChange = {handleChange}
+                        value = {projectData.order}
                         className = "formInputFull"
                     /> 
                     {submitted && <span>Updated {submitted}</span>}
