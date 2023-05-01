@@ -33,12 +33,13 @@ export default function EditProject(){
         if (!user) return navigate("/");
       }, [user, loadingAuth]);
 
-    
+    const sortedProjData = projData?.sort((a,b) => a.order - b.order)
+
     return (
         <div className = "pageWrapper">
             <h1 className = "nameHeading">Michael Branconier</h1>
             <div className="sectionWrapper">
-                <DataList type={"project"} data ={projData} deleteFunction={handleDelete}/>
+                <DataList type={"project"} data ={sortedProjData} deleteFunction={handleDelete}/>
             </div>
         </div>
     )

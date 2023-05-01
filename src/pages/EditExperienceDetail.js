@@ -20,17 +20,27 @@ export default function EditExperienceDetail(){
         location: "",
         startDate: "",
         endDate: "",
-        description:""
+        description:"",
+        seasonal: false,
     })
     const [submitted, setSubmitted] = useState()
     const handleChange = (event) =>{
-        const {value, name} = event.target
-        setExperienceData( prevExpData => {
-            return{
-                ...prevExpData,
-                [name]: value
-            }
-        })
+        const {value, name, type, checked} = event.target
+        if(type === 'checkbox') {
+            setExperienceData( prevExpData => {
+                return{
+                    ...prevExpData,
+                    [name]: checked
+                }
+            })
+        } else {
+            setExperienceData( prevExpData => {
+                return{
+                    ...prevExpData,
+                    [name]: value
+                }
+            })
+        }
     }
     
     useEffect(() => {
@@ -96,27 +106,33 @@ export default function EditExperienceDetail(){
                         value = {experienceData.position}
                         className = "formInputFull"
                     />
-                    <label>Company Name</label>
-                    <input
-                        type = "text"
-                        name = "company"
-                        onChange = {handleChange}
-                        value = {experienceData.company}
-                        className = "formInputFull"
-                    />
-                    <label>Location</label>
-                    <input
-                        type = "text"
-                        name = "location"
-                        onChange = {handleChange}
-                        value = {experienceData.location}
-                        className = "formInputFull"
-                    />
+                    <div className = "formHalfWrapper">
+                        <div className = "formBlockWrapper">
+                            <label>Company Name</label>
+                            <input
+                                type = "text"
+                                name = "company"
+                                onChange = {handleChange}
+                                value = {experienceData.company}
+                                className = "formInputHalf"
+                            />
+                        </div>
+                        <div className = "formBlockWrapper">
+                        <label>Location</label>
+                            <input
+                                type = "text"
+                                name = "location"
+                                onChange = {handleChange}
+                                value = {experienceData.location}
+                                className = "formInputHalf"
+                            />
+                        </div>
+                    </div>
                     <div className = "formHalfWrapper">
                         <div className = "formBlockWrapper">
                             <label>Start Date</label>
                             <input
-                                type = "text"
+                                type = "date"
                                 name = "startDate"
                                 onChange = {handleChange}
                                 value = {experienceData.startDate}
@@ -126,7 +142,7 @@ export default function EditExperienceDetail(){
                         <div className = "formBlockWrapper">
                             <label>End Date</label>
                                 <input
-                                    type = "text"
+                                    type = "date"
                                     name = "endDate"
                                     onChange = {handleChange}
                                     value = {experienceData.endDate}
@@ -134,7 +150,14 @@ export default function EditExperienceDetail(){
                                 />
                         </div>
                     </div>
-                        
+                    <label>Seasonal</label>
+                    <input
+                        type = "checkbox"
+                        name = "seasonal"
+                        onChange = {handleChange}
+                        value = {experienceData.seasonal}
+                        className = "formInputHalf"
+                    />
                     <label>Job Description (Bullets Separated by semicolon)</label>
                     <textarea 
                             name="description"
