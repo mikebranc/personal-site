@@ -29,13 +29,17 @@ export default function EditExperience(){
         if (loadingAuth) return ;
         if (!user) return navigate("/");
       }, [user, loadingAuth]);
+    
+    const sortedExpData = expData?.sort((a,b) => {
+        return new Date(b.startDate) - new Date(a.startDate)
+    })
       
-return(
-    <div className = "pageWrapper">
-        <h1 className = "nameHeading">Michael Branconier</h1>
-        <div className="sectionWrapper">
-            <DataList type={"experience"} data ={expData} deleteFunction = {handleDelete}/>
+    return(
+        <div className = "pageWrapper">
+            <h1 className = "nameHeading">Michael Branconier</h1>
+            <div className="sectionWrapper">
+                <DataList type={"experience"} data ={sortedExpData} deleteFunction = {handleDelete}/>
+            </div>
         </div>
-    </div>
-)
+    )
 }
