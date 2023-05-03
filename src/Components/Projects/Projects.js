@@ -20,13 +20,17 @@ export default function Projects(){
 
     const projectInfo = sortedProjData?.map((project) =>{
         return(  
-            <a className="projectLinkBlock" href={project.projectLink} key ={project.id}>
+            <a className="projectLinkBlock" href={project.link} key ={project.id} target="_blank" rel="noopener noreferrer">
                 <div className="projectWrapper" >
                     <div className="projectHead">
                         <h3 className="projectName">{project.name}</h3>
-                        <a href={project.githubLink}>
-                            <img className="projectGithubLink" src={github} alt="github Icon" />
-                        </a> 
+                        {
+                            project.githubLink && (
+                                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                    <img className="projectGithubLink" src={github} alt="github Icon" />
+                                </a> 
+                            )
+                        }
                     </div>
                     <p className="projectDescription">{project.description}</p>
                     <div className="projectSkillWrapper">
