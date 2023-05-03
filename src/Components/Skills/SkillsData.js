@@ -1,10 +1,10 @@
 export default [{
     type: "Languages",
-    details:["Javascript", "Python", "SQL", "HTML/CSS", "Java"]
+    details:["Javascript", "Python","Ruby", "SQL", "HTML/CSS", "Java"]
 },
 {
     type: "Frameworks",
-    details:["React", "git/Github", "Google Firebase"]
+    details:["React", "git/Github", "Google Firebase", "Ruby on Rails"]
 },
 {
     type: "Technologies",
