@@ -3,6 +3,9 @@ import SectionBlock from '../SectionBlock'
 import './About.css'
 import headshot from '../images/headshot.jpg'
 
+const WYLDCARDS_URL = 'https://www.wyldcards.shop/';
+const COMP_CRUNCH_URL = 'https://chrome.google.com/webstore/detail/comp-crunch-analyze-zillo/pfmjlnebociiohfhlpckomcmnajdonjp/'
+
 export default function About(){
     const [showAbout, setShowAbout] = useState(false)
 
@@ -17,19 +20,27 @@ export default function About(){
                     <img alt="profilePhoto" className="profilePhoto" src={headshot}/>
                 </div>
                 <div className="aboutTextCol">
-                    <h3 className="welcomeMessage">Hi! I'm Michael Branconier</h3>
-                    <p className="aboutText">Thanks for checking out my website! Here, you’ll learn more about my passion, expereince, and skills. 
-                        If you’re lucky, you might even learn a little about yourself.
+                    <h3 className="welcomeMessage">Hi! I'm Michael Branconier, A Full Stack Engineer</h3>
+                    <p className="aboutText">
+                        I bring expereince in tech, real estate and startups. I used to work for a real estate brokerage doing just about everything,
+                        but sales. Now I'm working as a full stack software engineer and absolutely love it. When I'm not working my day job, I love to spend time
+                        building new apps. I recently have built an&nbsp; 
+                        <a href={WYLDCARDS_URL} target='_blank' rel='noreferrer noopener' className='aboutLink'>
+                            NFC business card app
+                        </a>
+                        &nbsp;and a&nbsp;
+                        <a href={COMP_CRUNCH_URL} target='_blank' rel='noreferrer noopener' className='aboutLink'>
+                         chrome extension to analyze zillow data   
+                        </a>
+                        .
                         <br />
                         <br />
-                        I’ve bring expereince in tech, real estate and startups. I recently helped take a real estate brokerage
-                        from $0 to $100mm in transaction volume in 18 months. I currently am looking for a role as a fullstack
-                        software engineer! 
+                        &nbsp;Outside of work, I enjoy hiking, spending time with my family, reading and working out.
+                        </p>
+                        Thanks for checking out my website! If you keep going, you’ll learn more about my passion, expereince, and skills. 
+                        I'll also try to stay up to date with all the projects I've been working on.
                         <br />
                         <br />
-                        I’ve worked as a business analyst, director of operations and more. I love automation, building things, and 
-                        learning. I  welcome new opportunites and look forward to creating a brighter future through the use of 
-                        technology! I know that’s what everyone says. But I’m serious!</p>
                 </div>
             </div>
             }
