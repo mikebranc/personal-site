@@ -28,6 +28,9 @@
 .aboutTextCol{
     width:65%;
 }
+.aboutLink {
+    color:white;
+}
 
 @media only screen and (max-width: 768px) {
     .aboutContentWrapper{
