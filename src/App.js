@@ -18,7 +18,6 @@ import EditExperienceDetail from './pages/EditExperienceDetail';
 import EditProjectDetail from './pages/EditProjectDetail';
 
 
-
 function App() {
   return (
     <Router>
