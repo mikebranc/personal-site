@@ -3,11 +3,12 @@
     justify-content:center;
 }
 .footerLinkWrapper{
-    width:50%;
+    width:100%;
     display:flex;
     justify-content:space-between;
     align-items: center;
     margin-top:100px;
+    max-width: 600px;
 }
 .footerImg{
     width:75px;
@@ -15,5 +16,9 @@
 @media only screen and (max-width: 768px){
     .footerLinkWrapper{
         width:90%;
+        margin-top:30px;
+    }
+    .footerImg{
+        width:50px;
     }
 }
