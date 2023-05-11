@@ -64,16 +64,15 @@ body{
     
     }
     .sectionBlockHeading{
-        margin:0px;
         font-size: 25px;
-        font-family: 'Raleway', sans-serif;
-        color:black;
-        font-weight:400;
     }
-    
     .homeWrapper{
-        padding: 40px 50px;
+        padding: 40px 20px;
         max-width: 1200px;
         margin:auto;
+    }
+    .sectionBlock{
+        line-height: 32px;
+        padding: 14px;
     }
 }
