@@ -44,7 +44,6 @@ body{
     padding: 40px 100px;
     max-width: 1200px;
     margin:auto;
-    width:100%;
 }
 .sectionBlockHeading{
     margin:0px;
@@ -63,5 +62,18 @@ body{
         display:flex;
         justify-content: space-between;
     
+    }
+    .sectionBlockHeading{
+        margin:0px;
+        font-size: 25px;
+        font-family: 'Raleway', sans-serif;
+        color:black;
+        font-weight:400;
+    }
+    
+    .homeWrapper{
+        padding: 40px 50px;
+        max-width: 1200px;
+        margin:auto;
     }
 }
