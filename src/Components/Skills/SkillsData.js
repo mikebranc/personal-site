@@ -1,13 +1,13 @@
 export default [{
     type: "Languages",
-    details:["Javascript", "Python","Ruby", "SQL", "HTML/CSS", "Java"]
+    details:["Typescript", "Ruby", "Python", "SQL", "HTML/CSS", "Java", "PostgreSQL", "MySQL"]
 },
 {
-    type: "Frameworks",
-    details:["React", "git/Github", "Google Firebase", "Ruby on Rails"]
+    type: "Frameworks & Tools",
+    details:["React", "FastAPI", "Ruby on Rails","Flask", "git/Github", "Google Firebase", "AWS"]
 },
 {
-    type: "Technologies",
-    details:["Salesforce", "Pardot", "Excel", "Tableau", "VS Code", "Webflow", "Google Analytics"]
+    type: "AI Technologies",
+    details:["Large Language Models (LLM's)", "Retrieval Augmented Generation (RAG)", "LangChain", "VectorDBs", "LlamaIndex"]
 }
 ]
