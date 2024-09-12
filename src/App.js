@@ -24,8 +24,8 @@ function App() {
       <div>
         <Routes>
           <Route exact path='/' element={<Home/>} />
-          <Route path='/blog' element={<BlogAll/>} />
-          <Route path="/blog/:blogId" element={<BlogDetail/>}/>
+          {/* <Route path='/blog' element={<BlogAll/>} />
+          <Route path="/blog/:blogId" element={<BlogDetail/>}/> */}
           <Route path="/login" element={<Login />}/>
           <Route path ="/edit" element ={<Edit />} />
           <Route path ="/edit/blog" element ={<EditBlog />} />
