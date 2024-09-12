@@ -6,10 +6,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from '../firebase/config';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
 export default function EditProject(){
     const [projData, setProjData] = useState()
     const [loading, setLoading] = useState(false)

@@ -1,16 +1,43 @@
-import React, {useState} from "react"
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 import '../blogAll.css';
-import trashCan from './images/trashCan.png';
-import editPencil from './images/editPencil.png';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { firestore } from '../firebase/config'; // Import firestore
+import { doc, updateDoc } from 'firebase/firestore'; // Import Firestore functions
 
 export default function DataList(props){
-    //type tells us if this is a blog, expereince, post, publicBlog 
-    //all types are interenal edit displays except for publicBlog
-    let { data, type, deleteFunction} = props
+    let { data, type, deleteFunction } = props
+    const [sortedData, setSortedData] = useState([]);
 
-    const output = data?.map(entry =>{
+    useEffect(() => {
+        if (data) {
+            setSortedData([...data].sort((a, b) => a.order - b.order));
+        }
+    }, [data]);
+
+    const handleReorder = async (index, direction) => {
+        const newData = [...sortedData];
+        const item = newData[index];
+        const newIndex = direction === 'up' ? index - 1 : index + 1;
+
+        if (newIndex >= 0 && newIndex < newData.length) {
+            newData.splice(index, 1);
+            newData.splice(newIndex, 0, item);
+
+            // Update order in Firestore
+            for (let i = 0; i < newData.length; i++) {
+                const docRef = doc(firestore, type, newData[i].id);
+                await updateDoc(docRef, { order: i });
+            }
+
+            setSortedData(newData);
+        }
+    };
+
+    const output = sortedData.map((entry, index) => {
         //Blog post also feeds to main blog page
         let title = ""
         let subtitle = null
@@ -35,7 +62,7 @@ export default function DataList(props){
 
         if(type==="publicBlog"){
             return(           
-                <Link to={`/blog/${slug}`} className="post" key = {slug}>
+                <Link to={`/blog/${slug}`} className="post" key={slug}>
                     <div className="postDiv">
                         <div>
                             <h1 className="title">{title}</h1>
@@ -47,33 +74,36 @@ export default function DataList(props){
         }
         //all other instances are edit instances and redirect to their respective edit page
         return(           
-            <Link to={`/edit/${type}/${entry.id}`} className="postEdit" key = {entry.id}>
+            <div className="postEdit" key={entry.id}>
                 <div className="postDiv">
-                    <div>
+                    <div className="postContent">
                         <h1 className="title">{title}</h1>
                         <h3>{subtitle}</h3>
                     </div>
-                    <div className="delEditWrapper">
-                        <img className = "delEditIcon" src={editPencil} alt="edit button"/>
-                        <div onClick ={(e)=>deleteFunction(e,entry.id,type)} > 
-                            <img className = "delEditIcon" src={trashCan} alt="delete button"/>
-                        </div>
+                    <div className="actionButtons">
+                        <Link to={`/edit/${type}/${entry.id}`}>
+                            <EditIcon className="actionIcon" />
+                        </Link>
+                        <DeleteIcon className="actionIcon" onClick={(e) => deleteFunction(e, entry.id, type)} />
+                        <ArrowUpwardIcon className="actionIcon" onClick={() => handleReorder(index, 'up')} />
+                        <ArrowDownwardIcon className="actionIcon" onClick={() => handleReorder(index, 'down')} />
                     </div>
                 </div>
-            </Link>
+            </div>
         )
     })
+
     return(
-        <>
-        {type!== "publicBlog" && 
-        <div className = "editSectionHeader">
-            <Link to ="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
-            <Link to = {`/edit/${type}/new`} style={{color:'white', marginBottom:'20px'}}>
-                 <div className ="newButton">New {type}</div>
-            </Link>
-        </div>}
-        {output}
-        </>
+        <div className="dataListWrapper">
+            {type !== "publicBlog" && 
+            <div className="editSectionHeader">
+                <Link to="/edit" style={{color:'white', marginBottom:'20px'}}>Back to Edit</Link>
+                <Link to={`/edit/${type}/new`} style={{color:'white', marginBottom:'20px'}}>
+                    <div className="newButton">New {type}</div>
+                </Link>
+            </div>}
+            {output}
+        </div>
     )
     
 }

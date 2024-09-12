@@ -18,7 +18,7 @@ export default function EditProjectDetail(){
         link: "",
         githubLink:"",
         skills:[],
-        order: "",
+        // Remove the order field from here
     })
 
     useEffect(()=>{
@@ -114,14 +114,7 @@ export default function EditProjectDetail(){
                         value = {projectData.skills}
                         className = "formInputFull"
                     /> 
-                    <label>Order</label>
-                    <input
-                        type = "text"
-                        name = "order"
-                        onChange = {handleChange}
-                        value = {projectData.order}
-                        className = "formInputFull"
-                    /> 
+                    
                     {submitted && <span>Updated {submitted}</span>}
                     <button>Submit</button>
                 </form>

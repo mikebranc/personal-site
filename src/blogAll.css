@@ -1,56 +1,108 @@
-.post{
+/* Global styles */
+.post {
     text-decoration: none;
-    color:black;
+    color: white;
 }
-.postDiv{
+
+.postDiv {
     background-color: white;
-    border-radius: 10px;
-    padding: 5px 20px;
-    margin-bottom:25px;
-    max-width: 1200px;
-    display:flex;
-    justify-content:space-between;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-.postsWrapperInner{
-    padding: 50px 20px;
-    max-width:1200px;
-    display: flex;
-    flex-direction: column;
-    width:90%;
+
+/* Styles for public page */
+.post .title,
+.post h3 {
+    color: white;
 }
-.postsWrapperOuter{
+
+/* Styles for edit page */
+.dataListWrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.postEdit {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.postEdit .postDiv {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
-.delEditWrapper{
-    display:flex;
 
+.postEdit .postContent {
+    flex-grow: 1;
+    margin-right: 20px;
 }
-.delEditIcon{
-    width:40px;
-    margin: 0px 10px;
 
+.postEdit .title {
+    color: #333;
+    margin: 0;
 }
-.postEdit{
+
+.postEdit h3 {
+    color: #666;
+    margin: 5px 0 0;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.actionIcon {
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.actionIcon:hover {
+    color: #000;
+}
+
+/* Additional styles for edit page */
+.postEdit a {
     text-decoration: none;
-    color:black;
-    min-width:1000px;
+    color: inherit;
 }
-@media only screen and (max-width: 768px){
-    .postEdit{
-        text-decoration: none;
-        color:black;
-        min-width:370px;
-        max-width:370px;
-    }
-    .delEditIcon{
-        width:30px;
-        margin: 0px 10px;
-    
-    }
-    .title{
-        font-size: 20px;
-    }
+
+/* Ensure consistent width for all elements in edit view */
+.editWrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.formWrapper {
+    width: 100%;
+}
+
+.formInputFull {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.postEdit .postDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postEdit .postDiv > div:first-child {
+    flex-grow: 1;
+    margin-right: 20px;
 }
