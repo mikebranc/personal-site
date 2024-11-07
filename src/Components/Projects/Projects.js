@@ -16,7 +16,9 @@ export default function Projects(){
         getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 
-      const sortedProjData = projData?.sort((a,b) => a.order - b.order)
+      const sortedProjData = projData
+        ?.filter(project => !project.hidden)
+        ?.sort((a,b) => a.order - b.order)
 
     const projectInfo = sortedProjData?.map((project) =>{
         return(  

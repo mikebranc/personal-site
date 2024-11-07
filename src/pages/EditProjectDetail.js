@@ -6,6 +6,7 @@ import { firestore,auth } from '../firebase/config';
 import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
 import { getFirestoreDocument } from '../dbHelpers';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { FormControlLabel, Switch } from '@mui/material';
 
 export default function EditProjectDetail(){
     const {projectId} = useParams()
@@ -18,6 +19,8 @@ export default function EditProjectDetail(){
         link: "",
         githubLink:"",
         skills:[],
+        hidden: false,
+        updatedAt: new Date(),
         // Remove the order field from here
     })
 
@@ -114,6 +117,16 @@ export default function EditProjectDetail(){
                         value = {projectData.skills}
                         className = "formInputFull"
                     /> 
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={projectData.hidden || false}
+                                onChange={(e) => setProjectData({...projectData, hidden: e.target.checked})}
+                                name="hidden"
+                            />
+                        }
+                        label="Hidden"
+                    />
                     
                     {submitted && <span>Updated {submitted}</span>}
                     <button>Submit</button>
