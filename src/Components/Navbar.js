@@ -10,6 +10,9 @@ export default function Navbar() {
                 <a href="https://medium.com/@michaelbranconier" className="navLink" target='_blank' rel="noopener noreferrer">
                     Blog
                 </a>
+                <a href="https://summitandshark.com/?utm_source=personal-site&utm_medium=navigation&utm_campaign=consulting-link" className="navLink" target='_blank' rel="noopener noreferrer">
+                    Consulting
+                </a>
             </div>
         </nav>
     );
