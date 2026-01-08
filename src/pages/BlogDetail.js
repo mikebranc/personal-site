@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import Navbar from "../Components/Navbar"
 import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import '../blogDetail.css'
 import Footer from "../Components/Footer/Footer"
 import { collection, query, getDocs, where} from "firebase/firestore"
@@ -42,6 +43,7 @@ For someone on the maker's schedule, having a meeting is like throwing an except
                 //Shows several results, but we should only have one entry for each slug. 
                 //We will write rules to enforce this
                 postDocs.forEach(doc => setBlog(doc.data()))
+                setLoading(false)
             }
             catch(error){
                 throw error.message
@@ -59,7 +61,7 @@ For someone on the maker's schedule, having a meeting is like throwing an except
                     <h1 className="blogDetailHeading">{blog.title}</h1>
                     <span className="blogDetailDate">{blog.date}</span>
                     <p className="blogDetailBody">
-                        <ReactMarkdown children={blog.body}/>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.body}</ReactMarkdown>
                     </p>
                     <div className="divider"></div>
                     <a href="https://medium.com/@michaelbranconier" >
