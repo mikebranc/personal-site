@@ -7,7 +7,7 @@ import { firestore, auth } from '../firebase/config';
 import { getFirestoreDocument } from '../dbHelpers';
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function(){
+export default function EditBlogDetail(){
     const {blogId}  = useParams()
     const[loading, setLoading] = useState()
     const[currBlogId, setCurrBlogId] = useState(blogId)

@@ -7,9 +7,9 @@ export default function Navbar() {
         <nav className="navStyle">
             <Link to="/" id ="nameLink" className="navLink">Michael Branconier</Link>
             <div className="navLinkWrapper">
-                <a href="https://medium.com/@michaelbranconier" className="navLink" target='_blank' rel="noopener noreferrer">
+                <Link to="/blog" className="navLink">
                     Blog
-                </a>
+                </Link>
                 <a href="https://summitandshark.com/?utm_source=personal-site&utm_medium=navigation&utm_campaign=consulting-link" className="navLink" target='_blank' rel="noopener noreferrer">
                     Consulting
                 </a>
