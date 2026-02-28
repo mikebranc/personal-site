@@ -1,33 +1,77 @@
-/* Global styles */
+/* Blog list page */
+.postsWrapperOuter {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.postsWrapperInner {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Public blog post card */
 .post {
     text-decoration: none;
     color: white;
+    display: block;
+    margin-bottom: 16px;
 }
 
-.postDiv {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+.post .postDiv {
+    background-color: #2a2a2a;
+    padding: 24px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.2s ease;
 }
 
-/* Styles for public page */
-.post .title,
+.post .postDiv:hover {
+    background-color: #333;
+}
+
+.post .title {
+    color: #FAFAFA;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
 .post h3 {
-    color: white;
+    color: #aaa;
+    margin: 6px 0 0;
+    font-weight: 400;
+    font-size: 15px;
 }
 
-/* Styles for edit page */
+/* Edit page list */
 .dataListWrapper {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.postEdit {
+.editSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.newButton {
+    background-color: #FAFAFA;
+    color: #1e1e1e;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+
+.postEdit {
+    margin-bottom: 16px;
     width: 100%;
 }
 
@@ -73,36 +117,17 @@
     color: #000;
 }
 
-/* Additional styles for edit page */
 .postEdit a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Ensure consistent width for all elements in edit view */
-.editWrapper {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
+@media only screen and (max-width: 768px) {
+    .postsWrapperOuter {
+        padding: 20px 15px;
+    }
 
-.formWrapper {
-    width: 100%;
-}
-
-.formInputFull {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-.postEdit .postDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.postEdit .postDiv > div:first-child {
-    flex-grow: 1;
-    margin-right: 20px;
+    .post .title {
+        font-size: 18px;
+    }
 }

@@ -2,91 +2,83 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../editDetail.css'
 import {Link, useNavigate} from "react-router-dom";
-import { addDoc, setDoc, collection,doc, query, where, getDocs } from 'firebase/firestore';
+import { addDoc, setDoc, collection, doc } from 'firebase/firestore';
 import { firestore, auth } from '../firebase/config';
 import { getFirestoreDocument } from '../dbHelpers';
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function(){
+function formatDate(date) {
+    const d = new Date(date)
+    return [d.getMonth() + 1, d.getDate(), d.getFullYear()].join("-")
+}
+
+export default function EditBlogDetail(){
     const {blogId}  = useParams()
-    const[loading, setLoading] = useState()
-    const[currBlogId, setCurrBlogId] = useState(blogId)
+    const [loading, setLoading] = useState()
+    const [currBlogId, setCurrBlogId] = useState(blogId)
     const [submitted, setSubmitted] = useState()
+
+    const isNew = currBlogId === "new"
 
     const [blogData, setBlogData] = useState({
         title: '',
         body:'',
         slug:'',
-        date:'',
+        date: formatDate(new Date()),
         publishMedium:false,
-        publishWebsite:false
+        publishWebsite:false,
+        order: 0
     })
+
     const handleChange = (event)=>{
-        const {name,value, type, checked} = event.target
+        const {name, value, type, checked} = event.target
         setBlogData(prevData=>{
             return {
-                ...prevData, 
+                ...prevData,
                 [name] : type==="checkbox" ? checked : value
             }
         })
     }
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (loadingAuth) return ;
+        if (loadingAuth) return;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+    }, [user, loadingAuth, navigate]);
 
     useEffect(() =>{
-        setLoading(true)
-        if(currBlogId !== "new") getFirestoreDocument(currBlogId, setBlogData, setLoading, "blog")
-        //try using getFirestoreDocument function
-        // const getBlog = async () => {
-        //     try{
-        //         const postRef = query(collection(firestore, "blog"), where("slug", "==", blogId))
-        //         const postDocs = await getDocs(postRef)
-        //         //Shows several results, but we should only have one entry for each slug. 
-        //         //We will write rules to enforce this
-        //         postDocs.forEach(post => setBlogData(post.data()))
-        //         setLoading(false)
-        //     }
-        //     catch(error){
-        //         throw error.message
-        //     }
-        // }
-        // getBlog()
-    },[])
- 
+        if(!isNew){
+            setLoading(true)
+            getFirestoreDocument(currBlogId, setBlogData, setLoading, "blog")
+        }
+    },[currBlogId, isNew])
 
     const handleSubmit = (event) =>{
         event.preventDefault()
         const updateBlog = async() =>{
-            //will also need to upload blog post body as markdown
-            if(currBlogId === "new"){
-                //add try and catch
-                let currDate = new Date()
-                let day = currDate.getDate()
-                let year = currDate.getFullYear()
-                let month = currDate.getMonth()+1
-                const formattedDate = [month,day,year].join("-")
-
-                blogData.date = formattedDate
-                const blogRef = await addDoc(collection(firestore, "blog"),blogData)
-
-                console.log("Document written with ID: ", blogRef.id);
-                setCurrBlogId(blogRef.id)
+            if(isNew){
+                const newData = {
+                    ...blogData,
+                    date: blogData.date || formatDate(new Date())
+                }
+                try{
+                    const blogRef = await addDoc(collection(firestore, "blog"), newData)
+                    setCurrBlogId(blogRef.id)
+                    setSubmitted(new Date().toString())
+                }catch(error){
+                    console.error(error.message)
+                }
             }
             else{
                 try{
-                    const blogRef = await setDoc(doc(firestore, "blog",currBlogId),blogData)
-                    console.log("Document Updated");
+                    await setDoc(doc(firestore, "blog", currBlogId), blogData)
+                    setSubmitted(new Date().toString())
                 }catch(error){
-                    throw error.message
+                    console.error(error.message)
                 }
-            }   
-            setSubmitted(new Date().toString())
+            }
         }
         updateBlog()
     }
@@ -94,11 +86,11 @@ export default function(){
     return(
         <div className="editOuter">
             <h1 className='nameHeading'>Michael Branconier</h1>
-            <Link to={`/edit/blog/`} style={{color:'white'}}>Back to Blog</Link>
+            <Link to="/edit/blog/" style={{color:'white'}}>Back to Blog</Link>
             <div className ="editWrapper">
-                <form onSubmit ={handleSubmit} className ="formWrapper">
+                <form onSubmit={handleSubmit} className ="formWrapper">
                     <label>Post Name</label>
-                    <input 
+                    <input
                         type="text"
                         name="title"
                         value={blogData.title}
@@ -106,48 +98,45 @@ export default function(){
                         className="formInputFull"
                     />
                     <label>Slug</label>
-                    <input 
+                    <input
                         type="text"
                         name="slug"
                         value={blogData.slug}
                         onChange={handleChange}
                         className="formInputFull"
                     />
+                    <label>Date</label>
+                    <input
+                        type="text"
+                        name="date"
+                        value={blogData.date}
+                        onChange={handleChange}
+                        className="formInputFull"
+                        placeholder="M-D-YYYY"
+                    />
                     <label>Post Body</label>
-                    <span>All text is formatted with <a className ="markDownLink" href="https://www.markdownguide.org/basic-syntax/">markdown</a>
+                    <span>All text is formatted with <a className="markDownLink" href="https://www.markdownguide.org/basic-syntax/">markdown</a>
                     </span>
-                    <textarea 
+                    <textarea
                         name="body"
                         value={blogData.body}
                         onChange={handleChange}
                         className="formBody"
                     />
-                    <span style={{fontWeight: "bold", marginBottom: '15px'}}>Where would you like to publish? </span>
-                    <div className = "checkboxWrapper">
+                    <div className="checkboxWrapper">
                         <input
-                            type = "checkbox"
-                            name="publishMedium"
-                            value={blogData.publishMedium}
-                            onChange={handleChange}
-                        />
-                        <label className="checkboxLabel" htmlfor="publishMedium">Medium</label>
-                    </div>
-                    <div className = "checkboxWrapper">
-                        <input
-                            type = "checkbox"
+                            type="checkbox"
                             name="publishWebsite"
-                            value={blogData.publishWebsite}
+                            checked={!!blogData.publishWebsite}
                             onChange={handleChange}
                         />
-                        <label className="checkboxLabel" htmlfor="publishWebsite">Website</label>
+                        <label className="checkboxLabel" htmlFor="publishWebsite">Publish to Website</label>
                     </div>
 
                     {submitted && <span>Post Updated {submitted}</span>}
-                    <button>Publish</button>
+                    <button>{isNew ? "Create Post" : "Update Post"}</button>
                 </form>
             </div>
-
         </div>
-        
     )
 }

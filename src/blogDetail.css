@@ -1,41 +1,113 @@
-.blogPostWrapperInner{
-    padding: 50px 20px;
-    max-width:1200px;
-    display: flex;
-    flex-direction: column;
-
-}
-.blogPostWrapperOuter{
+.blogPostWrapperOuter {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
-.blogDetailDate{
-    font-weight: 600;
-    font-size:20px;
+.blogPostWrapperInner {
+    padding: 50px 20px;
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
-.blogDetailHeading{
+
+.blogDetailHeading {
     margin-bottom: 5px;
 }
-.blogDetailBody{
-    margin-top:20px;
-    line-height: 25px;
-    font-size:16px;
+
+.blogDetailDate {
+    font-weight: 600;
+    font-size: 16px;
+    color: #aaa;
 }
-.mediumButton{
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    border-radius: 10px;
-    border: none;
-    padding: 10px 10px;
-    font-size:18px;
-    margin-top:50px;
+
+.blogDetailBody {
+    margin-top: 20px;
+    line-height: 1.7;
+    font-size: 17px;
 }
-.divider{
-    width:100%;
-    height:1px;
-    background-color: white;
-    margin-top:80px;
+
+.blogDetailBody h2 {
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+.blogDetailBody h3 {
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.blogDetailBody p {
+    margin-bottom: 16px;
+}
+
+.blogDetailBody ul,
+.blogDetailBody ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+}
+
+.blogDetailBody code {
+    background-color: #2a2a2a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.blogDetailBody pre {
+    background-color: #2a2a2a;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
+
+.blogDetailBody pre code {
+    background: none;
+    padding: 0;
+}
+
+.blogDetailBody blockquote {
+    border-left: 3px solid #555;
+    margin-left: 0;
+    padding-left: 16px;
+    color: #ccc;
+}
+
+.blogDetailBody a {
+    color: #92F2F2;
+}
+
+.blogDetailBody img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.blogDetailBody table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.blogDetailBody th,
+.blogDetailBody td {
+    border: 1px solid #444;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.blogDetailBody th {
+    background-color: #2a2a2a;
+}
+
+@media only screen and (max-width: 768px) {
+    .blogPostWrapperInner {
+        padding: 20px 15px;
+    }
+
+    .blogDetailBody {
+        font-size: 16px;
+    }
 }

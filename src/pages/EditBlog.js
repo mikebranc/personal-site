@@ -22,7 +22,7 @@ export default function EditBlog(){
     useEffect(()=>{
         setLoading(true)
         getFirestoreCollection("blog",setBlogData,setLoading)
-    })
+    }, [])
 
     const handleDelete = (event, docId,type) =>{
         event.preventDefault()
