@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {Link, useNavigate} from "react-router-dom";
 import '../editDetail.css'
 import { firestore, auth } from '../firebase/config';
-import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, setDoc, doc } from 'firebase/firestore';
 import { getFirestoreDocument } from '../dbHelpers';
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -13,7 +13,7 @@ export default function EditExperienceDetail(){
     const {experienceId} = useParams()
     //used to prevent new entries being created after initial doc is saved
     const [currExperienceId, setCurrExperienceId] = useState(experienceId)
-    const[loading, setLoading] = useState()
+    const[, setLoading] = useState()
     const [experienceData, setExperienceData] = useState({
         position: "",
         company: "",
@@ -46,7 +46,7 @@ export default function EditExperienceDetail(){
     useEffect(() => {
         setLoading(true)
         if(experienceId !== "new") getFirestoreDocument(currExperienceId,setExperienceData, setLoading, "experience")
-    }, [experienceId])
+    }, [experienceId, currExperienceId])
 
     const handleSubmit =(event) =>{
         event.preventDefault()
@@ -67,7 +67,7 @@ export default function EditExperienceDetail(){
             else{
                 try{
                     const currentDescription = experienceData.description !== "" ?  experienceData.description.split(";") : ""
-                    const expRef = await setDoc(
+                    await setDoc(
                         doc(firestore, "experience",currExperienceId),
                         {
                             ...experienceData,
@@ -84,13 +84,13 @@ export default function EditExperienceDetail(){
         updateExp()
     }
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
 
     useEffect(() => {
         if (loadingAuth) return ;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+      }, [user, loadingAuth, navigate]);
 
     return(
         <div className="editOuter">

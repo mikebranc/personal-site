@@ -1,4 +1,4 @@
-export default [{
+const experienceData = [{
     id: 1,
     position: "Director of Operations & Partner",
     company: "Alden Pacific Investments",
@@ -43,3 +43,5 @@ export default [{
     ]
 }
 ]
+
+export default experienceData

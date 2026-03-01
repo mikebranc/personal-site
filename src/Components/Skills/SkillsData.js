@@ -1,4 +1,4 @@
-export default [{
+const skillsData = [{
     type: "Languages",
     details:["Typescript", "Ruby", "Python", "SQL", "HTML/CSS", "Java", "PostgreSQL", "MySQL"]
 },
@@ -11,3 +11,5 @@ export default [{
     details:["Large Language Models (LLM's)", "Retrieval Augmented Generation (RAG)", "LangChain", "VectorDBs", "LlamaIndex"]
 }
 ]
+
+export default skillsData

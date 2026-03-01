@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react"
 import SectionBlock from "../SectionBlock"
-import ExperienceData from "./ExperienceData"
 import './Experience.css'
 import { getFirestoreCollection } from "../../dbHelpers"
 import moment from "moment"
@@ -8,11 +7,10 @@ import moment from "moment"
 export default function Experience(){
     const [showExpereince, setShowExperience] = useState(false)
     const [expData, setExpData] = useState()
-    const [loading, setLoading] = useState(false)
+    const [, setLoading] = useState(false)
     
     useEffect(() => {
         setLoading(true)
-        //imported function to call DB
         getFirestoreCollection("experience", setExpData, setLoading)
       }, [])
 

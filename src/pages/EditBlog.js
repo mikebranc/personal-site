@@ -9,15 +9,15 @@ import { deleteFirestoreDocument } from '../dbHelpers';
 
 
 export default function EditBlog(){
-    const [loading, setLoading] = useState()
+    const [, setLoading] = useState()
     const [blogData, setBlogData] = useState()
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
     useEffect(() => {
         if (loadingAuth) return;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+      }, [user, loadingAuth, navigate]);
 
     useEffect(()=>{
         setLoading(true)

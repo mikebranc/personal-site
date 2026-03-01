@@ -1,10 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
 import { getStorage} from "firebase/storage"
-import { getFirestore, query, getDocs,collection, where,addDoc } from "firebase/firestore"
+import { getFirestore, collection, addDoc } from "firebase/firestore"
 import { getAuth, 
-  GoogleAuthProvider,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,

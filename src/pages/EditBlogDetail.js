@@ -14,7 +14,7 @@ function formatDate(date) {
 
 export default function EditBlogDetail(){
     const {blogId}  = useParams()
-    const [loading, setLoading] = useState()
+    const [, setLoading] = useState()
     const [currBlogId, setCurrBlogId] = useState(blogId)
     const [submitted, setSubmitted] = useState()
 

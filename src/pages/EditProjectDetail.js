@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {Link,useNavigate} from "react-router-dom";
 import '../editDetail.css'
 import { firestore,auth } from '../firebase/config';
-import { collection,addDoc, setDoc,doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, setDoc, doc } from 'firebase/firestore';
 import { getFirestoreDocument } from '../dbHelpers';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { FormControlLabel, Switch } from '@mui/material';
@@ -12,7 +12,7 @@ export default function EditProjectDetail(){
     const {projectId} = useParams()
     const [submitted, setSubmitted] = useState()
     const [currProjId, setCurrProjId] = useState(projectId)
-    const [loading, setLoading] = useState()
+    const [, setLoading] = useState()
     const [projectData, setProjectData] = useState({
         name: "",
         description:"",
@@ -27,7 +27,7 @@ export default function EditProjectDetail(){
     useEffect(()=>{
         setLoading(true)
         if(currProjId !== "new") getFirestoreDocument(currProjId,setProjectData, setLoading,"project")
-    }, [])
+    }, [currProjId])
 
     const handleChange = (event) =>{
         const {value, name} = event.target
@@ -39,12 +39,12 @@ export default function EditProjectDetail(){
         })
     }
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
     useEffect(() => {
         if (loadingAuth) return ;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+      }, [user, loadingAuth, navigate]);
 
     const handleSubmit =(event) =>{
         event.preventDefault()

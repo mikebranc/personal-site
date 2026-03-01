@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Link, useNavigate} from "react-router-dom"
 import {auth } from '../firebase/config'
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,12 +8,12 @@ import "../edit.css"
 
 export default function Edit(){
 
-    const [user, loading, error ] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
     const navigate = useNavigate()
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/");
-      }, [user, loading]);
+      }, [user, loading, navigate]);
 
     return(
         <div className="pageWrapper">

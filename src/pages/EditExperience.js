@@ -8,11 +8,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function EditExperience(){
     const [expData, setExpData] = useState()
-    const [loading, setLoading] = useState(false)
+    const [, setLoading] = useState(false)
     
     useEffect(() => {
         setLoading(true)
-        //imported function to call DB
         getFirestoreCollection("experience", setExpData, setLoading)
       }, [])
     
@@ -22,13 +21,13 @@ export default function EditExperience(){
         deleteFirestoreDocument(docId, setExpData, setLoading, type)
     }
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
 
     useEffect(() => {
         if (loadingAuth) return ;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+      }, [user, loadingAuth, navigate]);
     
     const sortedExpData = expData?.sort((a,b) => {
         return new Date(b.startDate) - new Date(a.startDate)

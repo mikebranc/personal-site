@@ -7,12 +7,10 @@ import { getFirestoreCollection } from "../../dbHelpers"
 export default function Projects(){
     const [showProjects, setShowProjects] = useState(false)
     const [projData, setProjData] = useState()
-    const [loading, setLoading] = useState(false)
-    
+    const [, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
-        //Uses db helper function
         getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 

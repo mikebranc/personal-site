@@ -6,7 +6,6 @@ import headshot from "../images/headshot.jpg";
 const THE_STORY_OF_US_URL = "https://thestoryofus.love/";
 const COMP_CRUNCH_URL =
   "https://chrome.google.com/webstore/detail/comp-crunch-analyze-zillo/pfmjlnebociiohfhlpckomcmnajdonjp/";
-const CRE_DATA_EXTRACTOR_URL = "https://credataextractor.com/";
 const GALILEO_URL = "https://galileo.ai";
 const SUMMIT_AND_SHARK_URL = "https://summitandshark.com/";
 

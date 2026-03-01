@@ -8,11 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function EditProject(){
     const [projData, setProjData] = useState()
-    const [loading, setLoading] = useState(false)
+    const [, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
-        //Uses db helper function
         getFirestoreCollection("project", setProjData, setLoading)
       }, [])
 
@@ -22,12 +21,12 @@ export default function EditProject(){
         deleteFirestoreDocument(docId, setProjData, setLoading, type)
     }
 
-    const [user, loadingAuth, error ] = useAuthState(auth)
+    const [user, loadingAuth] = useAuthState(auth)
     const navigate = useNavigate()
     useEffect(() => {
         if (loadingAuth) return ;
         if (!user) return navigate("/");
-      }, [user, loadingAuth]);
+      }, [user, loadingAuth, navigate]);
 
     const sortedProjData = projData?.sort((a,b) => a.order - b.order)
 

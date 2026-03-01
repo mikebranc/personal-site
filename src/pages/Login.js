@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth,logInWithEmailAndPassword } from "../firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -7,12 +7,12 @@ import "../login.css"
 export default function Login(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate()
 
     useEffect(()=>{
         if(user) navigate("/edit")
-    }, [user, loading])
+    }, [user, loading, navigate])
 
     const handleChange = (event) =>{
         const {name, value} = event.target
