@@ -1,61 +1,57 @@
-.schoolHeading{
+.schoolHeading {
     font-weight: bold;
     font-size: 32px;
     padding-top: 0px;
     margin-bottom: 0px;
-    margin-top:0px;
-}
-.schoolWrapper{
-    display:flex;
-    justify-content: space-between;
-    margin: 15px 0px 0px 0px;
-
-}
-.schoolDetail{
-    font-size:23px;
-    margin-bottom: 0px;
     margin-top: 0px;
-
 }
-.degreeWrapper{
+.schoolWrapper {
     display: flex;
     justify-content: space-between;
-    font-size:20px;
-    color:#C1C1C1;
+    margin: 15px 0px 0px 0px;
 }
-.acheivementHeading{
-    font-size:19px;
-    margin-bottom:0px;
+.schoolDetail {
+    font-size: 23px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
-.acheivementDetail{
-    line-height: 25px;
+.degreeWrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #C1C1C1;
 }
-.degreeName{
+.achievementHeading {
+    font-size: 19px;
     margin-bottom: 0px;
 }
-.acheivementWrapper{
+.achievementDetail {
+    line-height: 25px;
+}
+.degreeName {
+    margin-bottom: 0px;
+}
+.achievementWrapper {
     margin-bottom: 50px;
 }
-.educationWrapper{
-    padding:0px 30px;
+.educationWrapper {
+    padding: 0px 30px;
 }
-@media only screen and (max-width: 768px){
-    .schoolWrapper,.degreeWrapper{
+@media only screen and (max-width: 768px) {
+    .schoolWrapper, .degreeWrapper {
         flex-direction: column;
-    
     }
-    .degreeName{
+    .degreeName {
         margin-top: 15px;
     }
-    .degreeDetails{
-        margin-top:10px;
+    .degreeDetails {
+        margin-top: 10px;
         font-style: italic;
     }
-    .acheivementHeading{
-
-        margin-top:0px;
+    .achievementHeading {
+        margin-top: 0px;
     }
-    .schoolHeading{
-        font-size:27px;
+    .schoolHeading {
+        font-size: 27px;
     }
 }

@@ -1,44 +1,39 @@
-import React, {useState, useEffect} from 'react'
-import DataList from '../Components/DataList'
-import {useNavigate} from "react-router-dom";
-import {auth } from '../firebase/config'
+import { useState, useEffect } from "react";
+import DataList from "../Components/DataList";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestoreCollection } from '../dbHelpers';
-import { deleteFirestoreDocument } from '../dbHelpers';
+import { getFirestoreCollection, deleteFirestoreDocument } from "../dbHelpers";
 
+export default function EditBlog() {
+  const [, setLoading] = useState(false);
+  const [blogData, setBlogData] = useState();
 
+  const [user, loadingAuth] = useAuthState(auth);
+  const navigate = useNavigate();
 
-export default function EditBlog(){
-    const [, setLoading] = useState()
-    const [blogData, setBlogData] = useState()
+  useEffect(() => {
+    if (loadingAuth) return;
+    if (!user) navigate("/");
+  }, [user, loadingAuth, navigate]);
 
-    const [user, loadingAuth] = useAuthState(auth)
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (loadingAuth) return;
-        if (!user) return navigate("/");
-      }, [user, loadingAuth, navigate]);
+  useEffect(() => {
+    setLoading(true);
+    getFirestoreCollection("blog", setBlogData, setLoading);
+  }, []);
 
-    useEffect(()=>{
-        setLoading(true)
-        getFirestoreCollection("blog",setBlogData,setLoading)
-    }, [])
+  const handleDelete = (event, docId, type) => {
+    event.preventDefault();
+    setLoading(true);
+    deleteFirestoreDocument(docId, setBlogData, setLoading, type);
+  };
 
-    const handleDelete = (event, docId,type) =>{
-        event.preventDefault()
-        setLoading(true)
-        deleteFirestoreDocument(docId, setBlogData, setLoading, type)
-    }
-
-
-    return(
-        <div className = "pageWrapper">
-            <h1 className = "nameHeading">Michael Branconier</h1>
-            <div className="sectionWrapper">
-                <DataList type={"blog"} data ={blogData} deleteFunction={handleDelete}/>
-            </div>
-        </div>
-
-    )
-
+  return (
+    <div className="pageWrapper">
+      <h1 className="nameHeading">Michael Branconier</h1>
+      <div className="sectionWrapper">
+        <DataList type="blog" data={blogData} deleteFunction={handleDelete} />
+      </div>
+    </div>
+  );
 }

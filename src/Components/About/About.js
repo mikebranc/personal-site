@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SectionBlock from "../SectionBlock";
 import "./About.css";
 import headshot from "../images/headshot.jpg";
@@ -15,7 +15,7 @@ export default function About() {
   return (
     <div>
       <div
-        onClick={() => setShowAbout((prevState) => !prevState)}
+        onClick={() => setShowAbout((prev) => !prev)}
         className="sectionBlockWrapper"
       >
         <SectionBlock sectionName="ABOUT" open={showAbout} />

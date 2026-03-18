@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../Components/Navbar";
 import About from "../Components/About/About";
 import Education from "../Components/Education/Education";
@@ -9,8 +8,8 @@ import Footer from "../Components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div className="">
-      <Navbar/>
+    <div>
+      <Navbar />
       <div className="homeWrapper">
         <About />
         <Projects />
@@ -20,6 +19,5 @@ export default function Home() {
         <Footer />
       </div>
     </div>
-
   );
 }
