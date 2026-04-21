@@ -505,6 +505,16 @@
     gap: 6px;
   }
 
+  .mn-job-co {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mn-job-co .loc {
+    margin-left: 0;
+  }
+
   .mn-edu-awards {
     grid-template-columns: 1fr;
   }
