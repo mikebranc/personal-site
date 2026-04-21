@@ -153,7 +153,7 @@ export default function Home() {
             </div>
           </div>
           <h1 className="mn-headline">
-            Full-stack engineer building{" "}
+            Forward Deployed Engineer building{" "}
             <span className="accent">production-ready AI systems.</span>
           </h1>
           <p className="mn-sub">
@@ -169,7 +169,7 @@ export default function Home() {
 
         <Section num="01" title="About" open={open.about} onToggle={() => toggle("about")}>
           <p className="mn-lede">
-            I'm a full-stack engineer building production-ready AI systems.
+            I'm a Forward Deployed Engineer building production-ready AI systems.
           </p>
           <p className="mn-p">
             I'm currently a Forward Deployed Engineer at{" "}
