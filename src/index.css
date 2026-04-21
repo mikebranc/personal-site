@@ -1,12 +1,22 @@
+:root {
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --fg: #f2f1ee;
+  --mut: #7c7b77;
+  --dim: #3a3a3d;
+  --accent: oklch(0.76 0.13 240);
+  --accent-soft: oklch(0.76 0.13 240 / 0.12);
+  --line: rgba(242, 241, 238, 0.08);
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: #0a0a0c;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

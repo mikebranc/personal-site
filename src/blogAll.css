@@ -1,133 +1,138 @@
 /* Blog list page */
-.postsWrapperOuter {
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
+.blog-hero {
+  margin-bottom: 48px;
 }
 
-.postsWrapperInner {
-    width: 100%;
-    max-width: 800px;
+.blog-list {
+  border-top: 1px solid var(--line);
 }
 
-/* Public blog post card */
-.post {
-    text-decoration: none;
-    color: white;
-    display: block;
-    margin-bottom: 16px;
+.blog-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0 -16px;
+  transition: background 0.2s;
+  gap: 24px;
 }
 
-.post .postDiv {
-    background-color: #2a2a2a;
-    padding: 24px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.2s ease;
+.blog-row:hover {
+  background: var(--surface);
 }
 
-.post .postDiv:hover {
-    background-color: #333;
+.blog-row:hover .blog-row-title {
+  color: var(--accent);
 }
 
-.post .title {
-    color: #FAFAFA;
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
+.blog-row:hover .blog-row-arrow {
+  color: var(--accent);
+  transform: translate(3px, -3px);
 }
 
-.post h3 {
-    color: #aaa;
-    margin: 6px 0 0;
-    font-weight: 400;
-    font-size: 15px;
+.blog-row-title {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+  color: var(--fg);
 }
 
-/* Edit page list */
+.blog-row-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mut);
+  letter-spacing: 0.05em;
+}
+
+.blog-row-arrow {
+  color: var(--mut);
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+/* Admin edit list styles (DataList component) */
 .dataListWrapper {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .editSectionHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .newButton {
-    background-color: #FAFAFA;
-    color: #1e1e1e;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-family: 'Raleway', sans-serif;
-    font-size: 14px;
+  background-color: #fafafa;
+  color: #1e1e1e;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .postEdit {
-    margin-bottom: 16px;
-    width: 100%;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .postEdit .postDiv {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .postEdit .postContent {
-    flex-grow: 1;
-    margin-right: 20px;
+  flex-grow: 1;
+  margin-right: 20px;
 }
 
 .postEdit .title {
-    color: #333;
-    margin: 0;
+  color: #333;
+  margin: 0;
 }
 
 .postEdit h3 {
-    color: #666;
-    margin: 5px 0 0;
+  color: #666;
+  margin: 5px 0 0;
 }
 
 .actionButtons {
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .actionIcon {
-    cursor: pointer;
-    color: #555;
-    transition: color 0.3s ease;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease;
 }
 
 .actionIcon:hover {
-    color: #000;
+  color: #000;
 }
 
 .postEdit a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-@media only screen and (max-width: 768px) {
-    .postsWrapperOuter {
-        padding: 20px 15px;
-    }
-
-    .post .title {
-        font-size: 18px;
-    }
+@media (max-width: 640px) {
+  .blog-row-title {
+    font-size: 15px;
+  }
 }

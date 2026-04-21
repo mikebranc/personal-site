@@ -149,7 +149,7 @@ export default function Home() {
           <div className="mn-hero-row">
             <img src={headshot} alt="Michael Branconier" className="mn-portrait" />
             <div className="mn-hero-meta">
-              <div>Michael Branconier · Los Angeles · Forward Deployed Engineer</div>
+              <div>Michael Branconier · Madison, WI · Forward Deployed Engineer</div>
             </div>
           </div>
           <h1 className="mn-headline">
