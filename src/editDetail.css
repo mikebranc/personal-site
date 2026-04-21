@@ -61,6 +61,11 @@ button{
     align-items: center;
     flex-direction: column;
 }
+.backLink {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
 .formBlockWrapper{
     display: flex;
     flex-direction: column;

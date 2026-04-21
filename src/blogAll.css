@@ -59,6 +59,10 @@
     align-items: center;
     margin-bottom: 20px;
 }
+.editSectionLink {
+    color: white;
+    text-decoration: none;
+}
 
 .newButton {
     background-color: #FAFAFA;

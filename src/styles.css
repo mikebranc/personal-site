@@ -40,6 +40,16 @@ body{
     border-radius: 10px;
     padding: 18px;
 }
+.sectionBlock--open {
+    background-color: transparent;
+    border: 2px solid #FAFAFA;
+}
+.sectionBlock--open .sectionBlockHeading {
+    color: #FAFAFA;
+}
+.sectionBlock--closed {
+    background-color: #FAFAFA;
+}
 .homeWrapper{
     padding: 40px 100px;
     max-width: 1200px;
