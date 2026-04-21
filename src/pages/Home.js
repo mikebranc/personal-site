@@ -149,8 +149,7 @@ export default function Home() {
           <div className="mn-hero-row">
             <img src={headshot} alt="Michael Branconier" className="mn-portrait" />
             <div className="mn-hero-meta">
-              <div>Michael Branconier · Los Angeles</div>
-              <div className="mn-avail">Available for AI consulting</div>
+              <div>Michael Branconier · Los Angeles · Forward Deployed Engineer</div>
             </div>
           </div>
           <h1 className="mn-headline">
@@ -179,7 +178,7 @@ export default function Home() {
             </a>
             , where I work directly with Fortune 100 customers to design,
             evaluate, and deploy LLM applications in production. My work spans
-            LLM guardrails, evaluation pipelines, monitoring, and cost control —
+            LLM guardrails, evaluation pipelines, monitoring, and cost control,
             with a focus on reliability and real-world impact.
           </p>
           <p className="mn-p">
@@ -193,22 +192,22 @@ export default function Home() {
             <a href={SUMMIT_AND_SHARK_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
               Summit &amp; Shark
             </a>{" "}
-            — a production AI leasing chatbot for real estate clients and a{" "}
+            , a production AI leasing chatbot for real estate clients and a{" "}
             <a href={COMP_CRUNCH_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
               Chrome extension for Zillow data
             </a>{" "}
             now used by hundreds of people.
           </p>
           <p className="mn-p">
-            I'm also a GenAI nerd and like experimenting — like this{" "}
+            I'm also a GenAI nerd and like experimenting, like this{" "}
             <a href={THE_STORY_OF_US_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
               AI-powered poem generator for couples
             </a>
             . Outside of tech: hiking, camping, family, reading, training.
           </p>
           <p className="mn-p">
-            If you're building AI for real-world workflows — especially in real
-            estate — I'd love to connect.
+            If you're building AI for real-world workflows, especially in real
+            estate, I'd love to connect.
           </p>
         </Section>
 
@@ -286,13 +285,13 @@ export default function Home() {
             <li>LMU Arrupe Scholar</li>
             <li>Heron CBA Scholar</li>
             <li>John B. &amp; Nelly Llanos Kilroy Endowed Scholar</li>
-            <li>LMU Hackathon — Mozilla State of the Internet Award</li>
+            <li>LMU Hackathon: Mozilla State of the Internet Award</li>
           </ul>
         </Section>
 
         <footer className="mn-footer">
           <div className="mn-footer-left">
-            Reach out — <strong>michaelbranconier@gmail.com</strong>
+            Reach out: <strong>michaelbranconier@gmail.com</strong>
           </div>
           <div className="mn-socials">
             <a href="https://github.com/mikebranc/" target="_blank" rel="noopener noreferrer">
