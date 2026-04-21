@@ -179,35 +179,44 @@ export default function Home() {
             , where I work directly with Fortune 100 customers to design,
             evaluate, and deploy LLM applications in production. My work spans
             LLM guardrails, evaluation pipelines, monitoring, and cost control,
-            with a focus on reliability and real-world impact.
+            with a focus on reliability and real world impact.
           </p>
           <p className="mn-p">
-            Before tech full time, I worked in real estate operations, where I
-            helped scale a boutique brokerage to over $100M in transaction
-            volume. That shaped how I think about building software for
+            Before moving into tech full time, I worked in real estate
+            operations, where I helped scale a boutique brokerage to over $100M
+            in transaction volume. That experience sparked a long term interest
+            in real estate and shaped how I think about building software for
             operational teams.
           </p>
           <p className="mn-p">
-            Outside of work, I focus on real estate technology through{" "}
+            Outside of work, I focus on real estate technology, which is why I
+            started{" "}
             <a href={SUMMIT_AND_SHARK_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
-              Summit &amp; Shark
-            </a>{" "}
-            , a production AI leasing chatbot for real estate clients and a{" "}
+              Summit &amp; Shark, LLC
+            </a>
+            . Through Summit &amp; Shark, I've built a production AI leasing
+            chatbot for real estate clients and a{" "}
             <a href={COMP_CRUNCH_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
-              Chrome extension for Zillow data
-            </a>{" "}
-            now used by hundreds of people.
+              Chrome extension for analyzing Zillow data
+            </a>
+            &nbsp;that's now used by hundreds of users.
           </p>
           <p className="mn-p">
-            I'm also a GenAI nerd and like experimenting, like this{" "}
+            While I spend most of my time building reliable, end-to-end systems,
+            I'm also a GenAI nerd and enjoy experimenting with creative ideas
+            such as this{" "}
             <a href={THE_STORY_OF_US_URL} target="_blank" rel="noopener noreferrer" className="mn-link">
               AI-powered poem generator for couples
             </a>
-            . Outside of tech: hiking, camping, family, reading, training.
+            .
           </p>
           <p className="mn-p">
-            If you're building AI for real-world workflows, especially in real
-            estate, I'd love to connect.
+            Outside of tech, I enjoy hiking, camping, spending time with my
+            family, reading, and training.
+          </p>
+          <p className="mn-p">
+            If you're building AI for real world workflows, especially in real
+            estate, I'd love to connect!
           </p>
         </Section>
 
