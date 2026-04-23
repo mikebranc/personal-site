@@ -91,25 +91,27 @@ async function main() {
 
   console.log(`Fetching Firestore data from project "${projectId}"...`);
 
-  const [expDocs, projDocs, blogDocs, aboutRes] = await Promise.all([
+  // Bio lives in Home.js as JSX for full formatting control.
+  // When you update the bio in Home.js, update this constant too (and functions/index.js).
+  const BIO = `I'm a Forward Deployed Engineer building production-ready AI systems.
+
+I'm currently a Forward Deployed Engineer at Galileo (galileo.ai), where I work directly with Fortune 100 customers to design, evaluate, and deploy LLM applications in production. My work spans LLM guardrails, evaluation pipelines, monitoring, and cost control, with a focus on reliability and real world impact.
+
+Before moving into tech full time, I worked in real estate operations, where I helped scale a boutique brokerage to over $100M in transaction volume. That experience sparked a long term interest in real estate and shaped how I think about building software for operational teams.
+
+Outside of work, I focus on real estate technology, which is why I started Summit & Shark, LLC (summitandshark.com). Through Summit & Shark, I've built a production AI leasing chatbot for real estate clients and a Chrome extension for analyzing Zillow data that's now used by hundreds of users.
+
+While I spend most of my time building reliable, end-to-end systems, I'm also a GenAI nerd and enjoy experimenting with creative ideas such as an AI-powered poem generator for couples (thestoryofus.love).
+
+Outside of tech, I enjoy hiking, camping, spending time with my family, reading, and training.
+
+If you're building AI for real world workflows, especially in real estate, I'd love to connect!`;
+
+  const [expDocs, projDocs, blogDocs] = await Promise.all([
     fetchCollection(projectId, "experience"),
     fetchCollection(projectId, "project"),
     fetchCollection(projectId, "blog"),
-    fetch(
-      `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/settings/about`
-    ).then((r) => r.json()),
   ]);
-
-  const aboutDoc = aboutRes.fields
-    ? Object.fromEntries(
-        Object.entries(aboutRes.fields).map(([k, v]) => [k, unwrap(v)])
-      )
-    : {};
-
-  const DEFAULT_BIO =
-    "Michael Branconier is a Forward Deployed Engineer based in Madison, WI, building production-ready AI systems at Galileo.";
-
-  const bio = aboutDoc.bio || DEFAULT_BIO;
 
   const experience = expDocs.sort(
     (a, b) => new Date(b.startDate) - new Date(a.startDate)
@@ -136,7 +138,7 @@ async function main() {
     "",
     "## About",
     "",
-    ...bio.split("\n\n").map((p) => p.trim()).filter(Boolean).flatMap((p) => [p, ""]),
+    ...BIO.split("\n\n").map((p) => p.trim()).filter(Boolean).flatMap((p) => [p, ""]),
   ];
 
   if (experience.length > 0) {

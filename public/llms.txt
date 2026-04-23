@@ -4,7 +4,19 @@ _Last updated: April 23, 2026_
 
 ## About
 
-Michael Branconier is a Forward Deployed Engineer based in Madison, WI, building production-ready AI systems at Galileo.
+I'm a Forward Deployed Engineer building production-ready AI systems.
+
+I'm currently a Forward Deployed Engineer at Galileo (galileo.ai), where I work directly with Fortune 100 customers to design, evaluate, and deploy LLM applications in production. My work spans LLM guardrails, evaluation pipelines, monitoring, and cost control, with a focus on reliability and real world impact.
+
+Before moving into tech full time, I worked in real estate operations, where I helped scale a boutique brokerage to over $100M in transaction volume. That experience sparked a long term interest in real estate and shaped how I think about building software for operational teams.
+
+Outside of work, I focus on real estate technology, which is why I started Summit & Shark, LLC (summitandshark.com). Through Summit & Shark, I've built a production AI leasing chatbot for real estate clients and a Chrome extension for analyzing Zillow data that's now used by hundreds of users.
+
+While I spend most of my time building reliable, end-to-end systems, I'm also a GenAI nerd and enjoy experimenting with creative ideas such as an AI-powered poem generator for couples (thestoryofus.love).
+
+Outside of tech, I enjoy hiking, camping, spending time with my family, reading, and training.
+
+If you're building AI for real world workflows, especially in real estate, I'd love to connect!
 
 
 ## Experience
