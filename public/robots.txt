@@ -2,6 +2,5 @@
 User-agent: *
 Disallow:
 
-# LLM-friendly plain-text summary of this site
+# Plain-text summary for LLMs and AI crawlers: /llms.txt
 # See https://llmstxt.org/
-X-Robots-llms: /llms.txt
