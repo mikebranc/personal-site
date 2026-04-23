@@ -5,28 +5,77 @@
     <link rel="icon" href="%PUBLIC_URL%/mb-favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Michael Branconier's Personal Site"
-    />
+    <meta name="description" content="Michael Branconier — Forward Deployed Engineer in Madison, WI. Building production-ready AI systems at Galileo, working with Fortune 100 teams on LLM evaluation, guardrails, and reliability." />
+    <meta name="author" content="Michael Branconier" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Michael Branconier — Forward Deployed Engineer" />
+    <meta property="og:description" content="Forward Deployed Engineer at Galileo building production-ready AI systems. Working with Fortune 100 teams on LLM evaluation, guardrails, and reliability." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Michael" />
+    <meta property="profile:last_name" content="Branconier" />
+    <meta property="profile:username" content="mikebranc" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@mike_branc" />
+    <meta name="twitter:creator" content="@mike_branc" />
+    <meta name="twitter:title" content="Michael Branconier — Forward Deployed Engineer" />
+    <meta name="twitter:description" content="Forward Deployed Engineer at Galileo building production-ready AI systems. LLM evaluation, guardrails, and reliability for Fortune 100 teams." />
+
+    <!-- JSON-LD structured data for LLMs and search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Michael Branconier",
+      "jobTitle": "Forward Deployed Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Galileo",
+        "url": "https://galileo.ai"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Madison",
+        "addressRegion": "WI",
+        "addressCountry": "US"
+      },
+      "email": "michaelbranconier@gmail.com",
+      "url": "https://github.com/mikebranc/",
+      "sameAs": [
+        "https://github.com/mikebranc/",
+        "https://www.linkedin.com/in/mbranconier/",
+        "https://twitter.com/mike_branc"
+      ],
+      "description": "Forward Deployed Engineer building production-ready AI systems. Working with Fortune 100 teams on LLM evaluation, guardrails, monitoring, and cost control at Galileo. Founder of Summit & Shark LLC, building AI tools for real estate.",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Loyola Marymount University",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Los Angeles",
+          "addressRegion": "CA"
+        }
+      },
+      "knowsAbout": [
+        "LLM Evaluation",
+        "AI Guardrails",
+        "Large Language Models",
+        "Real Estate Technology",
+        "Software Engineering",
+        "Firebase",
+        "React"
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Michael Branconier's Personal Site</title>
+    <title>Michael Branconier — Forward Deployed Engineer</title>
   </head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF27KB5V3Z"></script>
@@ -38,17 +87,32 @@
     gtag('config', 'G-HF27KB5V3Z');
   </script>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222;">
+        <h1>Michael Branconier</h1>
+        <p><strong>Forward Deployed Engineer</strong> · Madison, WI · <a href="mailto:michaelbranconier@gmail.com">michaelbranconier@gmail.com</a></p>
+
+        <h2>About</h2>
+        <p>I'm a Forward Deployed Engineer building production-ready AI systems. I currently work at <a href="https://galileo.ai">Galileo</a>, where I work directly with Fortune 100 customers to design, evaluate, and deploy LLM applications in production. My work spans LLM guardrails, evaluation pipelines, monitoring, and cost control, with a focus on reliability and real-world impact.</p>
+        <p>Before moving into tech full time, I worked in real estate operations, where I helped scale a boutique brokerage to over $100M in transaction volume.</p>
+        <p>Outside of my primary role, I run <a href="https://summitandshark.com/">Summit &amp; Shark, LLC</a>, through which I've built a production AI leasing chatbot for real estate clients and a <a href="https://chrome.google.com/webstore/detail/comp-crunch-analyze-zillo/pfmjlnebociiohfhlpckomcmnajdonjp/">Chrome extension for analyzing Zillow data</a> used by hundreds of users.</p>
+
+        <h2>Education</h2>
+        <p><strong>Loyola Marymount University</strong> — Los Angeles, CA · May 2021<br/>
+        B.B.A. in Applied Information Management Systems, Minor in Computer Science<br/>
+        Magna Cum Laude · GPA 3.89</p>
+
+        <h2>Contact</h2>
+        <ul>
+          <li>Email: <a href="mailto:michaelbranconier@gmail.com">michaelbranconier@gmail.com</a></li>
+          <li>GitHub: <a href="https://github.com/mikebranc/">github.com/mikebranc</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/mbranconier/">linkedin.com/in/mbranconier</a></li>
+          <li>Twitter/X: <a href="https://twitter.com/mike_branc">@mike_branc</a></li>
+        </ul>
+
+        <p><em>JavaScript is required to view the full site including Experience, Projects, and Blog.</em></p>
+      </div>
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

@@ -26,6 +26,24 @@ CI=true npx react-scripts build
 - Data helpers are in `src/dbHelpers.js` (`getFirestoreCollection`, `getFirestoreDocument`, `deleteFirestoreDocument`).
 - The `setLoading` callback pattern is used across all pages — keep it even if the `loading` value isn't read directly.
 
+## Content & llms.txt
+
+The site has two types of content:
+
+- **Dynamic (Firestore)**: Experience, Projects, Blog — edited via the `/edit/*` admin pages.
+- **Static (code)**: About/bio, hero text, education — hardcoded in `src/pages/Home.js` as JSX for full formatting control.
+
+`public/llms.txt` is the plain-text summary of the site read by LLMs and crawlers. It must stay in sync with the actual site content.
+
+**Rule: whenever the bio, hero text, or any static about content in `Home.js` is updated, you MUST also update these two places to match:**
+
+1. **`public/llms.txt`** — the static plain-text version (About section, roughly lines 5–20).
+2. **`functions/index.js`** — the `BIO` constant near the top of the file, which the live Cloud Function uses to serve `/llms.txt` dynamically.
+
+Keep the bio text consistent across all three files. `public/llms.txt` and `functions/index.js` use plain text (no JSX, no HTML) — strip links down to readable text, e.g. "Galileo (galileo.ai)" instead of `<a href>`.
+
+The dynamic sections (Experience, Projects, Blog) in `llms.txt` are kept in sync automatically — do not manually edit those sections in `public/llms.txt` or `functions/index.js`.
+
 ## Styling
 
 - Dark theme: background `#1e1e1e`, text `#FAFAFA`, accent `#92F2F2`.

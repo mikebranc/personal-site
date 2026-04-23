@@ -1,0 +1,154 @@
+# Michael Branconier — Personal Site
+
+_Last updated: April 23, 2026_
+
+## About
+
+Michael Branconier is a Forward Deployed Engineer based in Madison, WI. He builds production-ready AI systems, currently working with Fortune 100 teams on LLM evaluation, guardrails, and reliability at Galileo (galileo.ai).
+
+Before moving into tech full time, Michael worked in real estate operations, helping scale a boutique brokerage to over $100 million in transaction volume. That experience shaped how he thinks about building software for operational teams and sparked a long-term interest in real estate technology.
+
+Outside of his primary role, Michael runs Summit & Shark, LLC (summitandshark.com), through which he has built a production AI leasing chatbot for real estate clients and a Chrome extension called Comp Crunch for analyzing Zillow data, now used by hundreds of users.
+
+Outside of tech, Michael enjoys hiking, camping, spending time with family, reading, and training.
+
+## Current Role
+
+- **Title:** Forward Deployed Engineer
+- **Company:** Galileo (galileo.ai)
+- **Location:** Madison, WI
+- **Focus:** LLM evaluation, guardrails, monitoring, reliability, and cost control for Fortune 100 customers
+
+## Experience
+
+### Forward Deployed Engineer at Galileo (Acquired by Cisco, 2026) · Madison, WI (Remote)
+_Jul 2025 – Present_
+
+- One of the earliest Forward Deployed Engineer hires, helping build the enterprise customer motion that led to Cisco's announced acquisition of Galileo in April 2026
+- Served as lead technical partner for strategic enterprise accounts including multiple Fortune 50 banks and Fortune 100 enterprises, implementing real-time AI observability and guardrailing across production LLM and agentic systems
+- Rebuilt and now maintain the company's flagship demo application, which has served as the backbone of customer-facing demos since Fall 2025. Standardized and modularized the codebase so Sales Engineers could customize it per domain or prospect, directly supporting a series of top-tier enterprise logo closes
+- Helped raise the Field Engineering team's product fluency by authoring technical documentation, hosting customer and community webinars, and partnering with teammates on complex enterprise engagements
+- Pushed the platform to its limits to unblock enterprise customer requirements, contributing fixes and feature work directly to the codebase while building deep expertise in AI observability, offline evaluation, and LLM guardrailing
+
+### Software Engineer, AI at MyCase · Los Angeles, CA (Remote)
+_May 2022 – Aug 2025_
+
+- Leveraged React, TypeScript, and Ruby on Rails to develop and implement robust features for our application
+- 
+Helped bring attention to generative AI within our organization and worked on our application's first AI features including a legal document summarizer and AI-powered text editing features
+- 
+Conducted comprehensive code reviews, ensuring the quality and efficiency of our team's output
+- 
+Collaborated closely with cross-functional colleagues in weekly grooming and biweekly planning meetings to discuss product and technical considerations
+- 
+Played a key role on the team responsible for integrating our software with a court case deadline generation service and the team responsible for introducing a new product that bridges the gap between legal payments and legal practice management
+- 
+Introduced generative AI to our engineering team, building a support chatbot, leading educational sessions, and winning our internal hackday (once with a general chat agent for our application and another time with AI-powered phone system that automates legal client intake)
+
+
+### Director of Operations & Partner at Alden Pacific Investments · Santa Monica, CA
+_Jan 2020 – Apr 2022_
+
+- Took investment real estate brokerage from $0-$100+mm in transaction volume and $2mm in gross commission in 18 months to get acquired by one of the top brokerages in the nation
+- Configured, designed, and implemented the company database (salesforce), marketing engine (pardot),  website, financial models and relevant 3rd party softwares
+- Developed infrastructure to track and manage sales team’s performance and forecast potential revenue in salesforce
+- Hired and managed the brokerage support staff which consisted of two analysts and a marketing coordinator 
+- Oversaw all support in the real estate transaction process including market analysis, underwriting, listing marketing, and the escrow process
+
+### Business Analyst Intern at Griddy Energy · Playa Vista, CA
+_Sep 2019 – Jan 2020_
+
+- Used python  and excel to extract, clean, and analyze data to generate valuable business insights for a wholesale energy company
+- 
+Shared key findings in reports with the rest of the staff through emails and group meetings
+- 
+Automated the majority of my reporting tasks using python and SQL
+
+
+### Cabin Counselor & Sailing Instructor at Catalina Island Camps · Avalon, CA (seasonal)
+_May 2018 – Jul 2019_
+
+- Led groups of 3rd-10th grade boys for 1-2-week sessions in various activities
+- 
+Taught groups of campers how to sail
+- 
+ Resolved disputes between campers and ensured their safety at activities
+
+
+## Projects
+
+### The Story of Us
+URL: https://thestoryofus.love/
+Turn photos into an AI generated love poem + slideshow
+Technologies: NextJS,  FastAPI,  LLMs,  Vision Models
+
+### Should I go To School?
+URL: https://www.shouldigotoschool.com/
+A simple calculator to calculate the true cost of college
+Technologies: Nextjs,  TypeScript,  shadcn
+
+### Study Buddy
+URL: https://youtu.be/1C56GHytjfM?si=QAP5p7bShC7QiJTx
+Use AI to share your screen and get homework help
+Technologies: LiveKit,  OpenAI,  Python
+
+### Comp Crunch (Live App)
+URL: https://www.compcrunch.com/
+A chrome extension that allows users to export data from Zillow 
+Technologies: React,  Chrome Extension
+
+### Smart Intake
+URL: https://drive.google.com/file/d/1OS5fySWRzfcBmNQKfG8dr0uR5Ryydpm2/view
+AI-powered phone system that automates legal client intake
+Technologies: Langchain,  NextJS,  Twilio,  FastAPI,  OpenAI
+
+### CRE Data Extractor
+URL: https://credataextractor.com/
+Extract rent roll data from an image and export as a CSV using AI
+Technologies: AI,  Next.js,  FastAPI,  Postgres, 
+
+### Langchain Python-JS (Tutorial)
+URL: https://levelup.gitconnected.com/use-the-python-langchain-library-in-a-javascript-application-bfbdbc8c59fe
+A tutorial teaching developers how to leverage the python LangChain library with javascript via a flask server
+Technologies: LangChain,  Javascript,  Python,  Tutorial
+
+### Zillow Chrome Extension (Tutorial)
+URL: https://medium.com/@michaelbranconier/creating-a-zillow-chrome-extension-with-react-part-1-76f75bcada3e
+Zillow Chrome extension created for a tutorial I created. Functionality is similar to Comp Crunch but not as complex
+Technologies: Chrome Extension,  React,  Tutorial
+
+### Patrick Properties
+URL: https://www.patrickpropertiesmadison.com/
+A full stack website for a property owner/manager that includes an admin portal to manage properties, requests and notifications
+Technologies: NextJS,  Vercel,  PostgreSQL,  Serverless
+
+### WyldCards
+URL: https://youtu.be/qvTyovH9-Q4?si=28JaerZR3iT4FBLo
+A full stack NFC business card app. Users can create accounts, sync them with their NFC device and connect with friends
+Technologies: React,  Firebase,  Javascript,  Next.js
+
+### AI Listing Description Generator
+URL: https://github.com/mikebranc/listing-description-app/tree/master
+Uses OpenAI's vision and completions API to accept a listing image and details and generate a listing description
+Technologies: React,  AI
+
+## Education
+
+**Loyola Marymount University** — Los Angeles, CA · May 2021
+B.B.A. in Applied Information Management Systems, Minor in Computer Science
+Magna Cum Laude · GPA 3.89
+
+**Awards:** LMU Arrupe Scholar, Heron CBA Scholar, John B. & Nelly Llanos Kilroy Endowed Scholar, LMU Hackathon Mozilla State of the Internet Award
+
+## Blog Posts
+
+Thoughts on AI, real estate tech, and building things.
+
+- **Build Simply, But not Any Simpler** (2-03-2026) — /blog/build-simply-but-not-any-simpler
+
+## Contact & Social
+
+- **Email:** michaelbranconier@gmail.com
+- **GitHub:** https://github.com/mikebranc/
+- **LinkedIn:** https://www.linkedin.com/in/mbranconier/
+- **Twitter/X:** https://twitter.com/mike_branc

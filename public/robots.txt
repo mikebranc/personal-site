@@ -1,3 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# LLM-friendly plain-text summary of this site
+# See https://llmstxt.org/
+X-Robots-llms: /llms.txt

@@ -25,9 +25,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "node scripts/generate-llms-txt.mjs && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-llms-txt": "node scripts/generate-llms-txt.mjs"
   },
   "eslintConfig": {
     "extends": [
