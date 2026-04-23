@@ -4,20 +4,8 @@ _Last updated: April 23, 2026_
 
 ## About
 
-Michael Branconier is a Forward Deployed Engineer based in Madison, WI. He builds production-ready AI systems, currently working with Fortune 100 teams on LLM evaluation, guardrails, and reliability at Galileo (galileo.ai).
+Michael Branconier is a Forward Deployed Engineer based in Madison, WI, building production-ready AI systems at Galileo.
 
-Before moving into tech full time, Michael worked in real estate operations, helping scale a boutique brokerage to over $100 million in transaction volume. That experience shaped how he thinks about building software for operational teams and sparked a long-term interest in real estate technology.
-
-Outside of his primary role, Michael runs Summit & Shark, LLC (summitandshark.com), through which he has built a production AI leasing chatbot for real estate clients and a Chrome extension called Comp Crunch for analyzing Zillow data, now used by hundreds of users.
-
-Outside of tech, Michael enjoys hiking, camping, spending time with family, reading, and training.
-
-## Current Role
-
-- **Title:** Forward Deployed Engineer
-- **Company:** Galileo (galileo.ai)
-- **Location:** Madison, WI
-- **Focus:** LLM evaluation, guardrails, monitoring, reliability, and cost control for Fortune 100 customers
 
 ## Experience
 
@@ -82,6 +70,11 @@ URL: https://thestoryofus.love/
 Turn photos into an AI generated love poem + slideshow
 Technologies: NextJS,  FastAPI,  LLMs,  Vision Models
 
+### Patrick Properties
+URL: https://www.patrickpropertiesmadison.com/
+A full stack website for a property owner/manager that includes an admin portal to manage properties, requests and notifications
+Technologies: NextJS,  Vercel,  PostgreSQL,  Serverless
+
 ### Should I go To School?
 URL: https://www.shouldigotoschool.com/
 A simple calculator to calculate the true cost of college
@@ -116,11 +109,6 @@ Technologies: LangChain,  Javascript,  Python,  Tutorial
 URL: https://medium.com/@michaelbranconier/creating-a-zillow-chrome-extension-with-react-part-1-76f75bcada3e
 Zillow Chrome extension created for a tutorial I created. Functionality is similar to Comp Crunch but not as complex
 Technologies: Chrome Extension,  React,  Tutorial
-
-### Patrick Properties
-URL: https://www.patrickpropertiesmadison.com/
-A full stack website for a property owner/manager that includes an admin portal to manage properties, requests and notifications
-Technologies: NextJS,  Vercel,  PostgreSQL,  Serverless
 
 ### WyldCards
 URL: https://youtu.be/qvTyovH9-Q4?si=28JaerZR3iT4FBLo

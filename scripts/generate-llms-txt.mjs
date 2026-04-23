@@ -14,16 +14,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 
 function loadEnv() {
-  const content = readFileSync(resolve(ROOT, ".env"), "utf8");
-  const env = {};
-  for (const line of content.split("\n")) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith("#")) continue;
-    const eqIdx = trimmed.indexOf("=");
-    if (eqIdx === -1) continue;
-    const key = trimmed.slice(0, eqIdx).trim();
-    const val = trimmed.slice(eqIdx + 1).trim().replace(/^["']|["']$/g, "");
-    env[key] = val;
+  // Start with process.env so CI/Vercel environment variables are always available.
+  const env = { ...process.env };
+  try {
+    // Overlay .env file for local development.
+    const content = readFileSync(resolve(ROOT, ".env"), "utf8");
+    for (const line of content.split("\n")) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const eqIdx = trimmed.indexOf("=");
+      if (eqIdx === -1) continue;
+      const key = trimmed.slice(0, eqIdx).trim();
+      const val = trimmed.slice(eqIdx + 1).trim().replace(/^["']|["']$/g, "");
+      env[key] = val;
+    }
+  } catch {
+    // No .env file — relying on process.env (CI/Vercel).
   }
   return env;
 }
