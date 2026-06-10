@@ -12,6 +12,9 @@
 # production
 /build
 
+# generated at build time by scripts/inject-static-html.mjs
+/functions/index-template.html
+
 # misc
 .DS_Store
 .env.local
