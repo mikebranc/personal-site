@@ -4,7 +4,9 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "index.html",
+      "llms.txt"
     ],
     "rewrites": [
       {
@@ -13,7 +15,7 @@
       },
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "prerender"
       }
     ]
   },

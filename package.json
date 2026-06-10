@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "node scripts/generate-llms-txt.mjs && react-scripts build",
+    "build": "node scripts/generate-llms-txt.mjs && react-scripts build && node scripts/inject-static-html.mjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-llms-txt": "node scripts/generate-llms-txt.mjs"
