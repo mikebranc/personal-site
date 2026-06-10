@@ -2,18 +2,21 @@
  * Regenerates public/llms.txt from live Firestore data.
  * Run with: npm run generate-llms-txt  (also runs automatically before `npm run build`)
  *
- * Data + rendering live in scripts/site-data.mjs and scripts/render.mjs so this
- * stays in sync with the static HTML snapshot injected into build/index.html.
+ * In production /llms.txt is served fresh by the `llmsTxt` Cloud Function, so it
+ * stays current without a rebuild. This static copy is the deploy-time fallback
+ * (and what's served if you ever host this without the function).
  *
- * Requires REACT_APP_FIREBASE_PROJECT_ID (in .env or the build environment) and
- * Firestore rules that allow public reads on experience, project, blog. You can
- * also point SITE_DATA_FILE at a JSON fixture to run offline.
+ * Rendering lives in functions/render.cjs (shared with the Cloud Functions).
+ * Requires REACT_APP_FIREBASE_PROJECT_ID (or SITE_DATA_FILE for offline runs).
  */
 
 import { writeFileSync } from "fs";
 import { resolve } from "path";
+import { createRequire } from "module";
 import { ROOT, fetchSiteData } from "./site-data.mjs";
-import { renderLlmsTxt } from "./render.mjs";
+
+const require = createRequire(import.meta.url);
+const { renderLlmsTxt } = require("../functions/render.cjs");
 
 async function main() {
   const data = await fetchSiteData();

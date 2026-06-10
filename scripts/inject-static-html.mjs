@@ -1,65 +1,63 @@
 /**
- * Post-build step: injects a full static HTML snapshot of the site's content
- * into build/index.html so that crawlers and AI agents that DON'T execute
- * JavaScript can read everything (About, Experience, Projects, Education, Blog)
- * straight from the raw HTML.
+ * Post-build step (runs after `react-scripts build`).
  *
- * It does two things to build/index.html:
- *   1. Replaces the <noscript> fallback with a freshly generated full snapshot.
- *   2. Replaces the JSON-LD (application/ld+json) block with enriched structured
- *      data that includes the full work history.
+ * Two jobs:
+ *   1. Bake a static snapshot of the site's content (About / Experience /
+ *      Projects / Education / Blog + JSON-LD) into build/index.html so the shell
+ *      always carries a sensible fallback.
+ *   2. Copy that shell to functions/index-template.html so the `prerender` Cloud
+ *      Function can serve it (with correct, content-hashed asset URLs) and
+ *      re-inject fresh Firestore data on every request — no rebuild needed when
+ *      you only edit content.
  *
- * Runs after `react-scripts build` (see the "build" script in package.json).
- * This is intentionally non-fatal: if Firestore is unreachable, the build still
- * succeeds with the static fallback baked into public/index.html.
+ * The template copy ALWAYS happens (even if Firestore is unreachable at build
+ * time) because the function needs the shell to serve the React app; the
+ * snapshot injection is best-effort and non-fatal.
  */
 
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { resolve } from "path";
+import { createRequire } from "module";
 import { ROOT, fetchSiteData } from "./site-data.mjs";
-import { renderStaticHtml, renderJsonLd } from "./render.mjs";
 
-async function main() {
-  const indexPath = resolve(ROOT, "build", "index.html");
-  if (!existsSync(indexPath)) {
-    throw new Error(`build/index.html not found (run react-scripts build first).`);
+const require = createRequire(import.meta.url);
+const { injectIntoHtml } = require("../functions/render.cjs");
+
+const BUILD_INDEX = resolve(ROOT, "build", "index.html");
+const FUNCTION_TEMPLATE = resolve(ROOT, "functions", "index-template.html");
+
+function main() {
+  if (!existsSync(BUILD_INDEX)) {
+    throw new Error("build/index.html not found (run react-scripts build first).");
   }
 
-  const data = await fetchSiteData();
-  let html = readFileSync(indexPath, "utf8");
+  const shell = readFileSync(BUILD_INDEX, "utf8");
 
-  // 1) Replace the <noscript> fallback with the full static snapshot.
-  const noscriptHtml = renderStaticHtml(data);
-  const noscriptRe = /<noscript>[\s\S]*?<\/noscript>/i;
-  if (noscriptRe.test(html)) {
-    html = html.replace(noscriptRe, `<noscript>${noscriptHtml}</noscript>`);
-  } else {
-    console.warn("⚠ No <noscript> block found in build/index.html; appending one to <body>.");
-    html = html.replace(/<body([^>]*)>/i, `<body$1><noscript>${noscriptHtml}</noscript>`);
-  }
+  // Always give the function a usable shell first (with correct asset hashes),
+  // so it works even if the Firestore fetch below fails.
+  writeFileSync(FUNCTION_TEMPLATE, shell, "utf8");
 
-  // 2) Replace the JSON-LD structured data with the enriched version.
-  const jsonLd = JSON.stringify(renderJsonLd(data), null, 2);
-  const ldRe = /<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/i;
-  const ldBlock = `<script type="application/ld+json">\n${jsonLd}\n</script>`;
-  if (ldRe.test(html)) {
-    html = html.replace(ldRe, ldBlock);
-  } else {
-    console.warn("⚠ No JSON-LD block found in build/index.html; inserting before </head>.");
-    html = html.replace(/<\/head>/i, `${ldBlock}\n</head>`);
-  }
-
-  writeFileSync(indexPath, html, "utf8");
-  console.log(
-    `✓ Injected static HTML snapshot into build/index.html ` +
-      `(${data.experience.length} jobs, ${data.projects.length} projects, ${data.blogPosts.length} blog posts)`
-  );
+  return fetchSiteData()
+    .then((data) => {
+      const injected = injectIntoHtml(shell, data);
+      writeFileSync(BUILD_INDEX, injected, "utf8");
+      writeFileSync(FUNCTION_TEMPLATE, injected, "utf8");
+      console.log(
+        `✓ Baked static snapshot into build/index.html and functions/index-template.html ` +
+          `(${data.experience.length} jobs, ${data.projects.length} projects, ${data.blogPosts.length} blog posts)`
+      );
+    })
+    .catch((err) => {
+      console.warn(
+        "⚠ Skipped snapshot injection:",
+        err.message ?? err,
+        "\n  (functions/index-template.html holds the un-injected shell; the prerender function will inject live data at request time)"
+      );
+    });
 }
 
-main().catch((err) => {
-  console.warn(
-    "⚠ Skipped static HTML injection:",
-    err.message ?? err,
-    "\n  (build/index.html keeps the static fallback from public/index.html)"
-  );
-});
+Promise.resolve()
+  .then(main)
+  .catch((err) => {
+    console.warn("⚠ inject-static-html failed:", err.message ?? err);
+  });
