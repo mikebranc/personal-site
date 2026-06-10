@@ -8,17 +8,23 @@ This project was built with [Create React App](https://github.com/facebook/creat
 
 ## Making the site readable for AI agents & crawlers
 
-The app is a client-side React SPA, so the Experience, Projects, and Blog sections are loaded from Firestore with JavaScript. Crawlers and AI agents that don't run JS would otherwise see an almost-empty page. To make everything scrapable straight from the raw HTML, the build emits machine-readable copies of the content:
+The app is a client-side React SPA, so Experience, Projects, and Blog are loaded from Firestore with JavaScript. Crawlers and AI agents (e.g. ChatGPT fetching the page) generally **don't run JS**, so they'd otherwise see an almost-empty page. To make everything readable from the raw HTML — and to keep it fresh **without a rebuild** when content changes in Firestore — HTML and `/llms.txt` are served through Cloud Functions.
 
-- **`/llms.txt`** — a Markdown summary of the whole site ([llmstxt.org](https://llmstxt.org/)). In production it's served fresh from Firestore by the `llmsTxt` Firebase Function (see `functions/index.js`); a static copy in `public/llms.txt` is regenerated at build time and acts as a fallback.
-- **Static HTML snapshot** — after `react-scripts build`, `scripts/inject-static-html.mjs` injects a full static rendering of About / Experience / Projects / Education / Blog into the `<noscript>` block of `build/index.html`, plus enriched schema.org JSON-LD (`Person` with full work history). No JavaScript or Firestore round-trip needed to read it.
+### How it's served (important: static files shadow rewrites)
 
-The data layer and renderers are shared so every surface stays in sync:
+Firebase Hosting always serves an exact-match static file before evaluating any function rewrite ([priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order)). So if `index.html` / `llms.txt` were left in the deployed `build/` folder, they'd shadow the functions and you'd be stuck with build-time content. To avoid that, `firebase.json` **ignores** `index.html` and `llms.txt` from the static deploy and routes them through functions:
 
-- `scripts/site-data.mjs` — canonical profile/bio constants + Firestore fetching (with a `SITE_DATA_FILE` JSON-fixture escape hatch for offline builds/tests).
-- `scripts/render.mjs` — pure renderers for `llms.txt`, the static HTML snapshot, and JSON-LD.
+- **`prerender` function** (`source: "**"`) serves the SPA shell for every HTML route. It reads the built shell (`functions/index-template.html`), then injects the latest Firestore data into the `<noscript>` fallback and JSON-LD at request time. Real browsers boot the React app as usual; non-JS agents get always-fresh, fully-populated HTML.
+- **`llmsTxt` function** (`source: "/llms.txt"`) renders the Markdown summary ([llmstxt.org](https://llmstxt.org/)) fresh from Firestore.
+- Static assets (`/static/**`, images, favicon, manifest) stay static and are served directly — they take precedence over the `**` rewrite, so they never hit the function.
 
-Both the `llms.txt` generation and the HTML injection are non-fatal: if Firestore is unreachable at build time, the previously committed `public/llms.txt` and the static fallback in `public/index.html` are used so the build never breaks.
+Both functions are **CDN-cached** (`s-maxage=300`) and **failure-safe**: if Firestore is ever unreachable, `prerender` serves the shell with its baked-in build-time snapshot instead of erroring.
+
+### Shared rendering / single source of truth
+
+- `functions/render.cjs` — the one place that owns the content constants (`BIO`, `AI_NOTE`, `PROFILE`, …) and all rendering (`renderLlmsTxt`, `renderStaticHtml`, `renderJsonLd`, `injectIntoHtml`, `shapeData`). It's CommonJS and lives in `functions/` because Cloud Functions can only `require` files inside their own package; the build scripts import it from there too.
+- `scripts/site-data.mjs` — build-time Firestore fetching (with a `SITE_DATA_FILE` JSON-fixture escape hatch for offline builds/tests).
+- `scripts/generate-llms-txt.mjs` / `scripts/inject-static-html.mjs` — build steps that produce the deploy-time fallbacks and the `functions/index-template.html` shell.
 
 The build wiring (`package.json`):
 
@@ -26,4 +32,14 @@ The build wiring (`package.json`):
 "build": "node scripts/generate-llms-txt.mjs && react-scripts build && node scripts/inject-static-html.mjs"
 ```
 
-> When you update the bio, also update the `BIO` constant in `scripts/site-data.mjs` and `functions/index.js` (the bio lives as JSX in `src/pages/Home.js` for formatting control).
+`scripts/inject-static-html.mjs` always copies the built shell to `functions/index-template.html` (so the function has the correct content-hashed asset URLs), even if the Firestore fetch fails.
+
+> When you update the bio, change the `BIO` constant in `functions/render.cjs` (the bio also lives as JSX in `src/pages/Home.js` for layout control). Everything else — `/llms.txt`, the static snapshot, JSON-LD — is generated from that single source.
+
+### Deploy
+
+```
+npm run build && firebase deploy
+```
+
+After deploy, editing content in Firestore (via the edit portal) shows up for crawlers within ~5 minutes (the CDN cache window) — **no rebuild required**. You only need to rebuild + redeploy for code/design changes.
